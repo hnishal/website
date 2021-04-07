@@ -5,11 +5,11 @@ import NavComponent from './Nav';
 const AccountComponent = () => {
     function passwordurl(event) {
         event.preventDefault();
-        window.location = 'http://localhost:3000/password';
+        window.location = 'http://localhost:5000/password';
     }
     function settingsurl(event) {
         event.preventDefault();
-        window.location = 'http://localhost:3000/settings';
+        window.location = 'http://localhost:5000/settings';
     }
 
     return (

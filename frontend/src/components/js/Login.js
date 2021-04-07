@@ -4,7 +4,7 @@ import '../css/Login.css'
 const LoginComponent = () => {
     function profileurl(event) {
         event.preventDefault();
-        window.location = 'http://localhost:3000/profile';
+        window.location = 'http://localhost:5000/profile';
     }
     return (
         <div class="mt-5 pt-5">

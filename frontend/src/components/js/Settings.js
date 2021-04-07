@@ -6,11 +6,11 @@ import NavComponent from './Nav';
 const ProfileformComponent = () => {
    function passwordurl(event) {
      event.preventDefault();
-    window.location = 'http://localhost:3000/password';
+    window.location = 'http://localhost:5000/password';
   }
    function accounturl(event) {
     event.preventDefault();
-    window.location = 'http://localhost:3000/account';
+    window.location = 'http://localhost:5000/account';
   }
     return ( 
       <div className="overflow-hidden ">

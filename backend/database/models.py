@@ -13,7 +13,7 @@ db.user_info.drop()
 db.create_collection("profiles")
 
 
-f1 = open('./backendv2/database/profile.json', 'r')
+f1 = open('./backend/database/profile.json', 'r')
 with f1 as j:
     d = json.loads(j.read())
 d = OrderedDict(d)
@@ -27,7 +27,7 @@ db.profiles.create_index("email",unique =True)
 #defining bids collection to store all data related to bids
 db.create_collection("bids")
 
-f1 = open('./backendv2/database/bid.json', 'r')
+f1 = open('./backend/database/bid.json', 'r')
 with f1 as j:
     d = json.loads(j.read())
 d = OrderedDict(d)
@@ -38,7 +38,7 @@ db.command(d)
 #defining projects collection to store data relating projects
 db.create_collection("projects")
 
-f1 = open('./backendv2/database/project.json', 'r')
+f1 = open('./backend/database/project.json', 'r')
 with f1 as j:
     d = json.loads(j.read())
 d = OrderedDict(d)
@@ -50,7 +50,7 @@ db.projects.create_index([('name', 'text'),('description','text')], default_lang
 
 #creating collection to store user information
 db.create_collection("user_info")
-f1 = open('./backendv2/database/user_info.json', 'r')
+f1 = open('./backend/database/user_info.json', 'r')
 with f1 as j:
     d = json.loads(j.read())
 d = OrderedDict(d)

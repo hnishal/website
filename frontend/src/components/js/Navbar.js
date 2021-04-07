@@ -4,7 +4,7 @@ import image5 from '../../image/5.jpg'
 const NavbarComponent = () =>
 { function loginurl(event) {
   event.preventDefault();
-  window.location = 'http://localhost:3000/login';
+  window.location = 'http://localhost:5000/login';
 }
 
   return (

@@ -67,7 +67,7 @@ const App = () => {
       
     <BrowserRouter >
     <Switch> 
-    <Route path = "/home" component = {home} />
+    <Route exact path = "/" component = {home}/>
     <Route path = "/login" component = {login} />
     <Route path='/Signup' component ={Signup}/>
     <Route path='/profile' component ={profile}/>
@@ -77,7 +77,7 @@ const App = () => {
     <Route path='/account' component={account}/>
     <Route path="/nav" component={nav}/>
     <Route path="/MyProjects" component={myprojects}/>
-    <Redirect to = "/home" />
+    <Redirect to = "/" />
     </Switch>
     </BrowserRouter>
   
