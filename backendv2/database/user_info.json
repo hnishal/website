@@ -1,0 +1,63 @@
+{
+    "collMod": "user_info",
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["user_id","name","contact_no","address", "edu_country", "edu_university", "edu_degree", "start_date", "finish_date","type"],
+        "properties": {
+          "user_id":{
+            "bsonType": "number",
+            "description": "user_id of user"
+          },
+          "name": {
+            "bsonType": "object",
+            "description": "fullname of user",
+            "properties": {
+                "first-name": { "bsonType": "string" },
+                "last-name": { "bsonType": "string" }
+            }
+          },
+          "contact_no": {
+            "bsonType": "number",
+            "description": "Una representación Hash de la contraseña"
+          },
+          "address": {
+            "bsonType": "object",
+            "description": "full-address of user",
+            "properties": {
+                "first-line": { "bsonType": "string" },
+                "state": { "bsonType": "string"},
+                "country": { "bsonType": "string" },
+                "zipcode" : { "bsonType": "number" }
+            }
+          },
+          "edu_country": {
+            "bsonType": "string",
+            "description": "Objeto que separa los nombres y apellidos"
+          },
+          "edu_university": {
+            "bsonType": "string",
+            "description": "Objeto que separa los nombres y apellidos"
+          },
+          "edu_degree": {
+            "bsonType": "string",
+            "description": "Objeto que separa los nombres y apellidos"
+          },
+          "start_date": {
+            "bsonType": "date",
+            "description": "Objeto que separa los nombres y apellidos"
+          },
+          "finish_date": {
+            "bsonType": "date",
+            "description": "Objeto que separa los nombres y apellidos"
+          },
+          "type": {
+            "enum": ["client","freelancer"],
+            "description": "Objeto que separa los nombres y apellidos"
+          }
+          
+        }
+      }
+    },
+    "validationLevel": "moderate"
+}

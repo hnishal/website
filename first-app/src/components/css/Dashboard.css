@@ -1,0 +1,13 @@
+
+  @media (max-width: 576px) { 
+    .little-card{
+      margin-top:8%;
+      margin-left:20%;
+    }
+   }
+
+   @media (min-width: 573px) and (max-width: 668px) {
+     .little-card{
+        margin-right: auto;
+     }
+    }

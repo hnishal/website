@@ -1,0 +1,9 @@
+@media (max-width: 576px) { 
+    .mini-card{
+      margin-right:18%;
+    }
+   
+.medium-card{
+    margin-top:3%;
+}
+}

@@ -1,0 +1,28 @@
+{
+    "collMod": "profiles",
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["user_id","username", "email","password"],
+        "properties": {
+          "user_id":{
+            "bsonType": "number",
+            "description": "Correo Electrónico"
+          },
+          "email": {
+            "bsonType": "string",
+            "description": "Correo Electrónico"
+          },
+          "password": {
+            "bsonType": "string",
+            "description": "Una representación Hash de la contraseña"
+          },
+          "username": {
+            "bsonType": "string",
+            "description": "Objeto que separa los nombres y apellidos"
+          }
+        }
+      }
+    },
+    "validationLevel": "moderate"
+}

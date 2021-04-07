@@ -1,0 +1,41 @@
+{
+    "collMod": "projects",
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["name","project_id","description", "skills","user_id","status","date"],
+        "properties": {
+          "name":{
+            "bsonType": "string",
+            "description": "name of project"
+          },
+          "project_id": {
+            "bsonType": "number",
+            "description": "unique project id"
+          },
+          "description": {
+            "bsonType": "string",
+            "description": "descritption of the project"
+          },
+          "skills": {
+            "bsonType": "array",
+            "description": "skills required"
+          },
+          "user_id": {
+            "bsonType": "number",
+            "description": "user id of employer"
+          },
+          "status": {
+            "enum": [ "open", "closed","completed"],
+            "description": "0 for project closed, 1 project open"
+          },
+          "date": {
+            "bsonType": "date",
+            "description": "date project was posted"
+          }
+          
+        }
+      }
+    },
+    "validationLevel": "moderate"
+}
