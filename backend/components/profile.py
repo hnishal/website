@@ -26,17 +26,23 @@ def create_profile(profile):
     new_profile.user_id = count
     try:
         db.profiles.insert_one(new_profile.__dict__)
-        return "profile created"
+        return {
+            "message":"Profile Created",
+            "result":True
+        }
     except:
-        return "username or email-id already exists"
+        return {
+            "message":"Username already exists.",
+            "result":False
+        }
 
     
 
-def check_login(profile):
+def check_login(profile): 
     try:
         profile_data = db.profiles.find_one({"username": profile["username"]})
-        bool = check_password_hash(profile_data["password"], profile["password"])
-        if bool == True :
+        boolean = check_password_hash(profile_data["password"], profile["password"])
+        if boolean == True :
             return "login successful"
         else:
             return "wrong password"

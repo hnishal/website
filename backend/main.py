@@ -8,19 +8,23 @@ app = Flask(__name__ ,static_folder="../frontend/build/static",
             template_folder="../frontend/build")
 bcrypt = Bcrypt(app)
 
+run_routes(app)
 @ app.route('/')
 @ app.route('/home')
 @ app.route('/login')
-@ app.route('/Signup')
+@ app.route('/signup')
 @ app.route('/profile')
-@ app.route('/Dashboard')
-@ app.route('/Settings')
+@ app.route('/dashboard')
+@ app.route('/settings')
 @ app.route('/password')
 @ app.route('/account')
-@ app.route('/myprojects')
+@ app.route('/myProjects')
+@ app.route('/postProject')
+@ app.route('/project')
+@ app.route('/howWorks')
 def hello_world():
     return render_template('index.html')
 
 
-run_routes(app)
+
 app.run(host='0.0.0.0', port=5000)

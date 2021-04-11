@@ -1,11 +1,37 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
-import '../css/Login.css'
-const LoginComponent = () => {
-    function profileurl(event) {
-        event.preventDefault();
-        window.location = 'http://localhost:5000/profile';
+import '../css/Login.css';
+import axios from 'axios';
+const LoginComponent = ({username,pwd, setusername, setpwd}) => {
+
+    
+    function dashboardurl() {
+        window.location = 'http://localhost:5000/dashboard';
     }
+
+    const [myusername, setmyusername] = useState("")
+    const [mypwd, setmypwd] = useState("")
+
+    function loginrequest(event) {
+        event.preventDefault()
+        setusername(myusername)
+        setpwd(mypwd)
+        const login_info = {
+            loginInfo: {
+                username:myusername,
+                password: mypwd
+            }
+        }
+    
+        axios.post('/api/login', login_info)
+        .then((response) => {
+            console.log(response);               
+        }).catch((error) => {                                   
+            console.log(error)
+        })
+        dashboardurl()
+    }   
+
     return (
         <div class="mt-5 pt-5">
             <div class="d-flex flex-column justify-content-center" id="login-box">
@@ -29,12 +55,12 @@ const LoginComponent = () => {
                     </div>
                     <div class="login-box-seperator"></div>
                 </div>
-                <div class="email-login" style={{ backgroundColor: "#ffffff" }}><input type="email" class="email-imput form-control"
+                <div class="email-login" style={{ backgroundColor: "#ffffff" }}><input type="email" class="email-imput form-control" required value={myusername} onChange={(event) => setmyusername(event.target.value)}
                     style={{ marginTop: "10px" }} required="" placeholder="Email" minlength="6" /><input type="password"
-                        class="password-input form-control" style={{ marginTop: "10px" }} required="" placeholder="Password"
+                        class="password-input form-control" style={{ marginTop: "10px" }} required="" placeholder="Password" 
                         minlength="6" /></div>
                 <div class="submit-row" style={{ marginBottom: "8px", paddingTop: "0px" }}><button
-                    class="btn btn-dark btn-block box-shadow " id="submit-id-submit" type="submit" style={{ color: "skyblue" }} onClick={(event) => { profileurl(event) }} >Login</button>
+                    class="btn btn-dark btn-block box-shadow " id="submit-id-submit" type="submit" style={{ color: "skyblue" }} onClick={loginrequest}>Login</button>
                     <div class="d-flex justify-content-between">
                         <div class="form-check form-check-inline" id="form-check-rememberMe"><input class="form-check-input"
                             type="checkbox" id="formCheck-1" for="remember" style={{ cursor: "pointer" }} name="check" />
@@ -45,7 +71,7 @@ const LoginComponent = () => {
                     </div>
                 </div>
                 <div id="login-box-footer" style={{ padding: "10px 20px", paddingBottom: "23px", paddingTop: "18px" }}>
-                    <p style={{ marginBottom: "0px" }}>Don't you have an account?<a id="register-link" href="./Signup" >Sign Up!</a></p>
+                    <p style={{ marginBottom: "0px" }}>Don't you have an account?<a id="register-link" href="./signup" >Sign Up!</a></p>
                 </div>
             </div>
         </div>

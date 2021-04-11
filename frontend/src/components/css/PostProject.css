@@ -1,0 +1,10 @@
+.projectpage{
+    margin-left:20%;
+    margin-right:20%;
+    border-radius: 10px;
+    box-shadow: 5px 10px #888888;
+}
+.bla {
+    background: linear-gradient(80deg, #A9A9A9 20%,     #00BFFF 0%);
+
+}

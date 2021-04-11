@@ -11,18 +11,6 @@ const DashboardComponent = () => {
       <NavComponent/>
       </div >
       <div  className="mt-2 ">
-      {/* <Navbar bg="dark" expand="lg">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto ml-5" >
-            <Nav.Link style={{color:"skyblue"}} href="#myprojects">My Projects</Nav.Link>
-            <Nav.Link style={{color:"skyblue"}} href="#dashboard">Dashboard</Nav.Link>
-            <Nav.Link style={{color:"skyblue"}} href="#inbox">Inbox</Nav.Link>
-            <Nav.Link style={{color:"skyblue"}} href="#feedback">Feedback</Nav.Link>
-            <Nav.Link style={{color:"skyblue"}} href="#freecredit">Free Credit</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar> */}
       <div className="row mr-auto ml-auto ml-5 pl-5 mt-5 pt-2 md-5 overflow-hidden" >
         <div className="col-lg-8 col-md-6 col-sm-6 col-xs-2 ">
           <Card>

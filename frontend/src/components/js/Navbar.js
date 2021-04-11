@@ -10,7 +10,7 @@ const NavbarComponent = () =>
   return (
   <Navbar variant="dark" bg="dark" expand="lg">
 
-    <Navbar.Brand className="ml-2"style={{color:"white"}} href="#home">
+    <Navbar.Brand className="ml-2"style={{color:"white"}} href="./home">
       <img alt="" src={image5} width="30" height="30" className="d-inline-block  align-top" />{' '}
        Free to Lance
     </Navbar.Brand>
@@ -21,14 +21,7 @@ const NavbarComponent = () =>
         <Button variant="outline-success">Search</Button>
       </Form>
       <Nav style={{color:"white"}} className="mr-auto ml-5">
-        <Nav.Link  href="#home">How it Works?</Nav.Link>
-        <NavDropdown   title="Browse" id="basic-nav-dropdown ">
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-        </NavDropdown>
+        <Nav.Link  href="./howWorks">How it Works?</Nav.Link>
       </Nav>
       <Button style={{color:"skyblue"}} variant="outline-primary" className="mr-3" onClick={(event) =>{loginurl(event)}}>Hire</Button>{' '}
       <Button style={{color:"skyblue"}} variant="outline-primary" className="mr-3" onClick={(event) =>{loginurl(event)}}>Work</Button>{' '}

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { Nav, Navbar, Card, Button, Form, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import {  Card, Button, Form, Col } from 'react-bootstrap';
+import axios from 'axios';
 import image18 from '../../image/18.jpg';
 import '../css/Profile.css';
 import Footer from './Footer';
@@ -9,19 +10,7 @@ const ProfileComponent = () => {
          <div>
         <NavComponent/>
     </div>
-        {/* <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto ml-5">
-                    <Nav.Link style={{color:"skyblue" }} className="mr-3" href="#features">MY PROFILE</Nav.Link>
-                    <Nav.Link style={{color:"skyblue" }} className="mr-3" href="#pricing">Improve Profile</Nav.Link>
-                    <Nav.Link style={{color:"skyblue" }} className="mr-3" href="#pricing">My Services</Nav.Link>
-                    <Nav.Link style={{color:"skyblue" }} className="mr-3" href="#pricing">Get Certified</Nav.Link>
-                    <Nav.Link style={{color:"skyblue" }} className="mr-3" href="#pricing">Promote Profile</Nav.Link>
-                    <Nav.Link style={{color:"skyblue" }} className="mr-3" href="#pricing">My Rewards</Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar> */}
+        
         <div className="row">
             <div className=" ml-2 col-lg-8  col-md-11  col-sm-11 col-xs-12 sm-mt-2">
                 <Card className="mt-5 pt-5 ml-5 pl-5">
@@ -75,65 +64,8 @@ const ProfileComponent = () => {
             
         </div>
         <div className="row">
-            <div className=" ml-2 col-lg-8  col-md-11  col-sm-11 col-xs-12">
-                <Card className="mt-5 pt-5 ml-5 pl-5">
-                    <h5>Experience</h5>
-                    <hr className="mr-2"/>
-                    <Form className="experience" >
-                        <Form.Row >
-                            <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Title</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your position or title" />
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Label>Company</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Company Name" />
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Group controlId="formGridAddress1">
-                            <Form.Label>Address</Form.Label>
-                            <Form.Control placeholder="Enter your address" />
-                        </Form.Group>
-
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formGridCity">
-                                <Form.Label>Start Month</Form.Label>
-                                <Form.Control placeholder="Month" />
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formGridZip">
-                                <Form.Label>Start Year</Form.Label>
-                                <Form.Control placeholder="Year" />
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formGridCity">
-                                <Form.Label>End Month</Form.Label>
-                                <Form.Control placeholder="Month" />
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formGridZip">
-                                <Form.Label>End Year</Form.Label>
-                                <Form.Control placeholder="Year" />
-                            </Form.Group>
-                        </Form.Row>
-
-
-                        <Form.Group id="formGridCheckbox">
-                            <Form.Check type="checkbox" label="I'm currently working here" />
-                        </Form.Group>
-                        <Form.Label>Summary</Form.Label>
-                        <Form.Control type="text" placeholder="Describe your work experience" />
-                        <Button style={{color:"skyblue" }} className="mt-2" variant="dark" type="submit">
-                            Save
-                        </Button>
-
-                    </Form>
-                    <Card.Body>
-
-
-                    </Card.Body>
-                </Card>
-            </div>
-            <div className=" ml-5 col-lg-3 col-md-3  col-sm-11 col-xs-12 d-none d-lg-block  overflow-hidden">
+        
+            {/* <div className=" ml-5 col-lg-3 col-md-3  col-sm-11 col-xs-12 d-none d-lg-block  overflow-hidden">
                 <Card className="mt-5 pt-5 ml-5 pl-5">
                     <div className="d-flex">
                         <Card.Body >
@@ -156,141 +88,11 @@ const ProfileComponent = () => {
                         </Card.Body>
                       </div>
                 </Card>
-            </div>
+            </div> */}
         </div>
-        <div className="row">
-            <div className="ml-2 col-lg-8  col-md-11  col-sm-11 col-xs-12">
-                <Card className="mt-5 pt-5 ml-5 pl-5">
-                    <h5>Education</h5>
-                    <hr />
-                    <Form className="experience" >
-                        <Form.Row >
-                            <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Country</Form.Label>
-                                <Form.Control type="text" placeholder=" Enter your Country's Name" />
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Label >University</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Your University Name" />
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Group controlId="formGridAddress1">
-                            <Form.Label>Degree</Form.Label>
-                            <Form.Control placeholder="Enter your degree" />
-                        </Form.Group>
-
-                        <Form.Row className="mr-5 pr-5">
-                            <Form.Group as={Col} controlId="formGridCity">
-                                <Form.Label>Start year</Form.Label>
-                                <Form.Control placeholder="Enter year" />
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formGridZip">
-                                <Form.Label>End year</Form.Label>
-                                <Form.Control placeholder="Enter year" />
-                            </Form.Group>
-                            
-                        </Form.Row>
-                        <Button style={{color:"skyblue" }}className="mt-2 " variant="dark" type="submit">
-                            Save
-                        </Button>
-
-                    </Form>
-                    <Card.Body>
-
-
-                    </Card.Body>
-                </Card>
-            </div>
-            
-            </div>
-            <div className="row">
-            <div className=" ml-2 col-lg-8  col-md-11 col-sm-11 col-xs-12">
-                <Card className="mt-5 pt-5 ml-5 pl-5">
-                    <h5>Qualification</h5>
-                    <hr />
-                    <Form className="experience" >
-                        <Form.Row >
-                            <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Professional Certificate</Form.Label>
-                                <Form.Control type="text" placeholder="Professional Certificate"  />
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Label>Conferring Organization</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Conferring Organization" />
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                        <Form.Label>Summary</Form.Label>
-                        <Form.Control textype="text" placeholder="Describe your qualification" />
-                        </Form.Row>
-                        <Form.Row className="mt-3 mr-5 pr-5">
-                            <Form.Group as={Col} controlId="formGridCity">
-                                <Form.Label >Start Year</Form.Label>
-                                <Form.Control  placeholder="Enter Year" />
-                            </Form.Group>
-                        </Form.Row>
-
-                        
-                        <Button style={{color:"skyblue" }} className="mt-2" variant="dark" type="submit">
-                            Save
-                        </Button>
-
-                    </Form>
-                    <Card.Body>
-
-
-                    </Card.Body>
-                </Card>
-            </div>
-            
-            </div>
-            <div className="row ">
-            <div className="ml-2 col-lg-8  col-md-11  col-sm-11 col-xs-12">
-                <Card className="mt-5 pt-5 ml-5 pl-5 mb-5">
-                    <h5>Publications</h5>
-                    <hr />
-                    <Form className="experience" >
-                        <Form.Row >
-                            <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Publisher</Form.Label>
-                                <Form.Control type="text" placeholder="Enter the publisher" />
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Label>Conferring Organization</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Conferring Organization" />
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                        <Form.Label>Summary</Form.Label>
-                        <Form.Control textype="text" placeholder="Describe about your publication" />
-                        </Form.Row>
-
-                        
-                        <Button style={{color:"skyblue" }} className="mt-2" variant="dark" type="submit">
-                            Save
-                        </Button>
-
-                    </Form>
-                    <Card.Body>
-
-
-                    </Card.Body>
-                </Card>
-            </div>
-            </div>
+        <div className="mt-5">
             <Footer/>
+            </div>
     </div>
-
-
-
-
-
-
-
-
 }
 export default ProfileComponent;

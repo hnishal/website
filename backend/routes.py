@@ -25,7 +25,7 @@ def run_routes(app):
     @ app.route('/api/login',methods=['POST'])
     def login():
         json_request = request.get_json()
-        response = check_login(json_request["login-info"])
+        response = check_login(json_request["loginInfo"])
         return jsonify(response), 201
 
     @ app.route('/api/post_project', methods=['POST'])

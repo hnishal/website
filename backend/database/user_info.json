@@ -3,7 +3,7 @@
     "validator": {
       "$jsonSchema": {
         "bsonType": "object",
-        "required": ["user_id","name","contact_no","address", "edu_country", "edu_university", "edu_degree", "start_date", "finish_date","type"],
+        "required": ["name","contact_no","address", "edu_country", "edu_university", "edu_degree", "start_date", "finish_date","type"],
         "properties": {
           "user_id":{
             "bsonType": "number",
