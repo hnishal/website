@@ -12,6 +12,7 @@ class Profile:
     def __init__(self,info):
         self.username=info['username']
         self.email=info['email']
+        self.type=info['type']
         self.user_id=None
         self.password=self.hash_password(info["password"])
     def hash_password(self,pw):
@@ -28,7 +29,8 @@ def create_profile(profile):
         db.profiles.insert_one(new_profile.__dict__)
         return {
             "message":"Profile Created",
-            "result":True
+            "result":True,
+            "user_id":new_profile.user_id
         }
     except:
         return {
@@ -53,8 +55,10 @@ def show_profile(id):
     try:
         myquery= {"user_id": id}
         temp=db.profiles.find_one(myquery)
+        temp1=db.user_info.find_one(myquery)
         del temp["password"]
-        return json_util.dumps(temp)
+        temp2=temp | temp1
+        return json_util.dumps(temp2)
     except:
         return "profile not found"
 

@@ -56,4 +56,5 @@ with f1 as j:
 d = OrderedDict(d)
 
 db.command(d)
+db.user_info.create_index("user_id",unique =True)
 

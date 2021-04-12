@@ -3,9 +3,9 @@
     "validator": {
       "$jsonSchema": {
         "bsonType": "object",
-        "required": ["name","project_id","description", "skills","user_id","status","date"],
+        "required": ["project_name","project_id","description", "skills","user_id","status","date"],
         "properties": {
-          "name":{
+          "project_name":{
             "bsonType": "string",
             "description": "name of project"
           },

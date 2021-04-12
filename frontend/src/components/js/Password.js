@@ -3,7 +3,31 @@ import { Form, Button, Col, Card } from 'react-bootstrap';
 import Footer from './Footer';
 import NavComponent from './Nav';
 const PasswordComponent = () => {
-    function Settingsurl(event) {
+
+
+    // const [degree,setdegree]=useState("")
+  
+    // function settingrequest(event) {
+    //     event.preventDefault()
+  
+    //     const setting_info = {
+    //       info  : {
+    //           user_id:user_id,
+    //           name:{
+    //             first_name:firstname,
+    //             last_name:lastname
+    //           },
+              
+              
+    //     axios.put('/api/password_change', details)
+    //     .then((response) => {
+    //         console.log(response);               
+    //     }).catch((error) => {                                   
+    //         console.log(error)
+    //     })
+    // }
+    
+ function Settingsurl(event) {
         event.preventDefault();
         window.location = 'http://localhost:5000/Settings';
     }

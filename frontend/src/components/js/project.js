@@ -1,8 +1,36 @@
-import React from 'react';
+import React,{useState} from 'react';
+import axios from 'axios';
 import { Navbar,Button,Card, ProgressBar } from 'react-bootstrap';
 import NavComponent from './Nav';
 import Footer from './Footer';
-const ProjectComponent = () => {
+const ProjectComponent = ({user_id}) => {
+
+  const [amount,setamount]=useState(0)
+  const [days,setdays]=useState(0)
+  const [proposal,setproposal]=useState("")
+  const [project_id,setproject_id]=useState(0)
+
+  function bidrequest(event) {
+      event.preventDefault()
+
+      const bid_info = {
+        bid: {
+            user_id:user_id,
+            project_id:Number(project_id),
+            amount:Number(amount),
+            days:Number(days),
+            proposal:proposal
+          }
+      }
+      axios.post('/api/place_bid', bid_info)
+      .then((response) => {
+          console.log(response);               
+      }).catch((error) => {                                   
+          console.log(error)
+      })
+  }  
+
+
     return (
         <div class="overflow-hidden">
         <div>
@@ -70,14 +98,14 @@ const ProjectComponent = () => {
                     <div class="input-group-prepend">
                         <span class="input-group-text">₹</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Enter bid amount" required/>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Enter bid amount" type="number" value={amount} onChange={(event) => setamount(event.target.value)} required/>
                     <div class="input-group-append">
                         <span class="input-group-text">INR</span>
                     </div>
                     </div>
                     <h6>This project will be delivered in</h6>
                   <div class="input-group mb-3 mt-2">
-                  <input type="text" class="form-control" placeholder="Enter number of days" aria-label="Recipient's username" aria-describedby="basic-addon2" required/>
+                  <input type="text" class="form-control" placeholder="Enter number of days" aria-label="days" aria-describedby="basic-addon2" type="number" value={days} onChange={(event) => setdays(event.target.value)} required/>
                   <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2">Days</span>
                 </div>  
@@ -87,10 +115,10 @@ const ProjectComponent = () => {
                     <div class="input-group">
                         <div class="input-group-prepend">
                         </div>
-                        <textarea class="form-control" aria-label="With textarea" placeholder="What makes you the best candidate for this project"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" placeholder="What makes you the best candidate for this project" value={proposal} onChange={(event) => setproposal(event.target.value)} ></textarea>
                         </div>
 
-                        <button className="btn btn-dark mt-4" style={{color:"skyblue", width:"100%"}}>Bid on Project</button>
+                        <button className="btn btn-dark mt-4" style={{color:"skyblue", width:"100%"}} onClick={bidrequest} >Bid on Project</button>
               </div>
 
             </Card.Body>

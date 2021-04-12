@@ -3,7 +3,7 @@
     "validator": {
       "$jsonSchema": {
         "bsonType": "object",
-        "required": ["user_id","username", "email","password"],
+        "required": ["user_id","username", "email","password","type"],
         "properties": {
           "user_id":{
             "bsonType": "number",
@@ -19,6 +19,10 @@
           },
           "username": {
             "bsonType": "string",
+            "description": "Objeto que separa los nombres y apellidos"
+          },
+          "type": {
+            "enum": ["employer","freelancer"],
             "description": "Objeto que separa los nombres y apellidos"
           }
         }

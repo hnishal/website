@@ -18,13 +18,9 @@ const App = () => {
   const[username,setusername]=useState('')
   const[email,setemail]=useState('')
   const[pwd,setpwd]=useState('')
-  const[firstname,setfirstname]=useState('')
-  const[lastname,setlastname]=useState('')
-  const[address,setaddress]=useState('')
-  const[city,setcity]=useState('')
-  const[state,setstate]=useState('')
-  const[zip,setzip]=useState('')
-  const[country,setcountry]=useState('')
+  const[user_id,setuser_id]=useState(0)
+  const[type,settype]=useState('')
+  
 
   const login = () => {
     return (
@@ -33,7 +29,7 @@ const App = () => {
   } 
   const signup = () => {
     return (
-      <SignupComponent username={username} setusername={setusername} email={email} setemail={setemail} pwd={pwd} setpwd={setpwd}/>
+      <SignupComponent username={username} setusername={setusername} email={email} setemail={setemail} pwd={pwd} setpwd={setpwd} setuser_id={setuser_id} type={type} settype={settype}/>
     )
   } 
   const profile = () => {
@@ -48,16 +44,12 @@ const App = () => {
   }
   const project= () => {
     return(
-      <ProjectComponent />
+      <ProjectComponent  user_id={user_id}/>
     )
   }
   const settings = () => {
     return(
-      <ProfileformComponent 
-      // firstname={firstname} setfirstname={setfirstname} lastname={lastname} setlastname={setlastname} email={email} setemail={setemail}
-      // address={address} setaddress={setaddress} city={city} setcity={setcity} state={state} setstate={setstate} zip={zip} setzip={setzip} country
-      // ={country} setcountry={setcountry}
-      />
+      <ProfileformComponent user_id={user_id}/>
     )
   }
   const password = () => {
@@ -87,7 +79,7 @@ const App = () => {
   }
   const postproject = () => {
     return(
-      <PostProjectComponent/>
+      <PostProjectComponent user_id={user_id}/>
     )
   }
   return(

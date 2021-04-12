@@ -7,13 +7,14 @@ import pymongo
 import shutil
 import time
 from datetime import datetime
+import logging
 
 count = db.projects.count()
 
 
 class Project:
     def __init__(self, project):
-        self.name = project['name']
+        self.project_name = project['project_name']
         self.project_id = None
         self.description = project['description']
         self.skills = project['skills']
@@ -53,7 +54,7 @@ def add_project(project):
         else:
             return "no such profile exists"
     except:
-        return console.log(err)
+        return logging.exception("Error occured while printing GeeksforGeeks")
 
 def show_user_projects(id):
     try:
@@ -62,12 +63,12 @@ def show_user_projects(id):
         list1=[]
         for item in mycursor:
             list1.append(item)
-        if(~len(list1)):
+        if not list1:
             return "no data found"
         else:
             return json_util.dumps(list1)
     except:
-        return console.log(err)
+        return logging.exception("Error occured while printing GeeksforGeeks")
 
 def category_search(skill):
     try:
@@ -77,12 +78,12 @@ def category_search(skill):
             arr=item["skills"]
             if skill in arr:
                 list1.append(item)
-        if(~len(list1)):
+        if not list1:
                 return "no data found"
         else:
             return json_util.dumps(list1)
     except:
-        return console.log(err)
+        return logging.exception("Error occured while printing GeeksforGeeks")
 
 def keyword_search(text):
     try:
@@ -90,9 +91,9 @@ def keyword_search(text):
         list1=[]
         for item in mycursor:
             list1.append(item)
-        if(~len(list1)):
+        if not list1:
             return "no data found"
         else:
             return json_util.dumps(list1)
     except:
-        return console.log(err)
+        return logging.exception("Error occured while printing GeeksforGeeks")

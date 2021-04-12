@@ -3,7 +3,7 @@
     "validator": {
       "$jsonSchema": {
         "bsonType": "object",
-        "required": ["name","contact_no","address", "edu_country", "edu_university", "edu_degree", "start_date", "finish_date","type"],
+        "required": ["user_id","name","contact_no","address", "edu_country", "edu_university", "edu_degree", "start_year", "finish_year"],
         "properties": {
           "user_id":{
             "bsonType": "number",
@@ -13,8 +13,8 @@
             "bsonType": "object",
             "description": "fullname of user",
             "properties": {
-                "first-name": { "bsonType": "string" },
-                "last-name": { "bsonType": "string" }
+                "first_name": { "bsonType": "string" },
+                "last_name": { "bsonType": "string" }
             }
           },
           "contact_no": {
@@ -25,7 +25,8 @@
             "bsonType": "object",
             "description": "full-address of user",
             "properties": {
-                "first-line": { "bsonType": "string" },
+                "firstline" : {"bsonType":"string"},
+                "city": { "bsonType": "string" },
                 "state": { "bsonType": "string"},
                 "country": { "bsonType": "string" },
                 "zipcode" : { "bsonType": "number" }
@@ -43,16 +44,12 @@
             "bsonType": "string",
             "description": "Objeto que separa los nombres y apellidos"
           },
-          "start_date": {
-            "bsonType": "date",
+          "start_year": {
+            "bsonType": "number",
             "description": "Objeto que separa los nombres y apellidos"
           },
-          "finish_date": {
-            "bsonType": "date",
-            "description": "Objeto que separa los nombres y apellidos"
-          },
-          "type": {
-            "enum": ["client","freelancer"],
+          "finish_year": {
+            "bsonType": "number",
             "description": "Objeto que separa los nombres y apellidos"
           }
           

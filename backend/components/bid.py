@@ -5,6 +5,7 @@ import pymongo
 from database.models import db
 from bson import json_util, ObjectId
 from datetime import datetime
+import logging
 
 
 count = db.bids.count()
@@ -12,8 +13,8 @@ count = db.bids.count()
 class Bid:
     def __init__(self, bid):
         self.bid_id = None
-        self.hourly_rate = bid['hourly_rate']
-        self.weekly_limit = bid['weekly_limit']
+        self.amount = bid['amount']
+        self.days = bid['days']
         self.proposal = bid['proposal']
         self.project_id = bid['project_id']
         self.user_id = bid['user_id']
@@ -36,7 +37,7 @@ def drop_bid(data):
         else:
             return "bid dosent exist"
     except:
-        return console.log(err)
+        return logging.exception("Error occured while printing GeeksforGeeks")
 
 # def check_bid_status():
 #     return None
@@ -47,7 +48,7 @@ def show_user_bids(id):
     list1=[]
     for item in mycursor:
         list1.append(item)
-    if(~len(list1)):
+    if not list1:
                 return "no data found"
     else:
         return json_util.dumps(list1)
@@ -58,7 +59,7 @@ def show_project_bids(id):
     list1=[]
     for item in mycursor:
         list1.append(item)
-    if(~len(list1)):
+    if not list1:
                 return "no data found"
     else:
         return json_util.dumps(list1)

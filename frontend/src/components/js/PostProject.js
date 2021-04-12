@@ -1,12 +1,34 @@
-import React from 'react';
+import React,{useState} from 'react';
+import axios from 'axios';
 import {Form,Card} from 'react-bootstrap';
 import '../css/PostProject.css'
-const PostProjectComponent = ()=>{
+const PostProjectComponent = ({user_id})=>{
 
-    return(
-      
+  const [project_name,setproject_name]=useState("")
+  const [project_more_info,setproject_more_info]=useState("")
+  const [project_skills,setproject_skills]=useState([])
 
-    <div className="bla" >
+  function postprojectrequest(event) {
+      event.preventDefault()
+
+      const postproject_info = {
+        project: {
+            user_id:user_id,
+            project_name:project_name,
+            description:project_more_info,
+            skills:project_skills
+          }
+      }
+      axios.post('/api/post_project', postproject_info)
+      .then((response) => {
+          console.log(response);               
+      }).catch((error) => {                                   
+          console.log(error)
+      })
+  }  
+
+  return(
+      <div className="bla" >
       <div>
 
       <h1 className="text-center" >Free-to-lance</h1>
@@ -17,24 +39,24 @@ const PostProjectComponent = ()=>{
         <Form className="ml-5 mr-5" >
   <Form.Group controlId="exampleForm.ControlInput1">
     <h4 className="mt-3">Choose a name for your project</h4>
-    <Form.Control  type="name" placeholder="e.g.Build me a website" required/>
+    <Form.Control  type="name" placeholder="e.g.Build me a website" value={project_name} onChange={(event) => setproject_name(event.target.value)} required/>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
     <h4 className="mt-5">Tell us more about your project</h4>
     <h6>Start with a bit about yourself or your business, and include an overview of what you need done.</h6>
-    <Form.Control as="textarea" placeholder="Describe your project here...." rows={3} required/>
+    <Form.Control as="textarea" placeholder="Describe your project here...." value={project_more_info} onChange={(event) => setproject_more_info(event.target.value)} rows={3} required/>
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
     <h4 className="mt-5">Skills required</h4>
-    <Form.Control as="textarea" placeholder="e.g.javascript,python etc." rows={3} required/>
+    <Form.Control as="textarea" placeholder="e.g.javascript,python etc." value={project_skills} onChange={(event) => setproject_skills(event.target.value)} rows={3} required/>
   </Form.Group>
   <div>
   <hr/>
-  <button>Upload files</button>
+  {/* <button>Upload files</button>
    <p>Drag & drop any images or documents that might be helpful in explaining your brief here (Max file size: 25 MB).</p>
-    <hr/>
+    <hr/> */}
     </div>
-
+    <button className="m-2 btn btn-dark" style={{color:"skyblue"}} onClick={postprojectrequest} >Post Project</button>
 </Form>
 </Card>
     </div>

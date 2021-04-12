@@ -3,17 +3,17 @@
     "validator": {
       "$jsonSchema": {
         "bsonType": "object",
-        "required": ["bid_id","hourly_rate","weekly_limit", "proposal","project_id","user_id","date"],
+        "required": ["bid_id","amount","days", "proposal","project_id","user_id","date"],
         "properties": {
           "bid_id":{
             "bsonType": "number",
             "description": "unique id of bid"
           },
-          "hourly_rate": {
+          "amount": {
             "bsonType": "number",
             "description": "price per hour of work"
           },
-          "weekly_limit": {
+          "days": {
             "bsonType": "number",
             "description": "work hour per week"
           },
