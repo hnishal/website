@@ -5,46 +5,48 @@ import Footer from './Footer';
 import NavComponent from './Nav';
 const ProfileformComponent = () => {
 
-//   const [firstname, setfirstname] = useState("")
-//   const [lastname, setlastname] = useState("")
-//   const [email, setemail] = useState("")
-//   const [address, setaddress] = useState("")
-//   const [city, setcity] = useState("")
-//   const [state, setstate] = useState("")
-//   const [zip, setzip] = useState("")
-//   const [country, setcountry] = useState("")
+  const [firstname, setfirstname] = useState("")
+  const [lastname, setlastname] = useState("")
+  const [email, setemail] = useState("")
+  const [address, setaddress] = useState("")
+  const [city, setcity] = useState("")
+  const [state, setstate] = useState("")
+  const [zip, setzip] = useState("")
+  const [country, setcountry] = useState("")
 
-//   function settingrequest(event) {
-//       event.preventDefault()
-//       setfirstname(firstname)
-//       setlastname(lastname)
-//       setemail(email)
-//       setaddress(address)
-//       setcity(city)
-//       setstate(state)
-//       setzip(zip)
-//       setcountry(country)
+  function settingrequest(event) {
+      event.preventDefault()
+      setfirstname(firstname)
+      setlastname(lastname)
+      setemail(email)
+      setaddress(address)
+      setcity(city)
+      setstate(state)
+      setzip(zip)
+      setcountry(country)
 
-//       const setting_info = {
-//           : {
-//               firstname:firstname,
-//               lastname:lastname,
-//               email:email,
-//               address:address,
-//               city:city,
-//               state:state,
-//               zip:zip,
-//               country:country
-//           }
-//       }
+      const setting_info = {
+        info  : {
+            name:{
+              first-name:firstname,
+              last-name:lastname
+            },
+              email:email,
+              address:address,
+              city:city,
+              state:state,
+              zip:zip,
+              country:country
+          }
+      }
   
-//       axios.post('/api/add_user_info', setting_info)
-//       .then((response) => {
-//           console.log(response);               
-//       }).catch((error) => {                                   
-//           console.log(error)
-//       })
-//   }  
+      axios.post('/api/add_user_info', setting_info)
+      .then((response) => {
+          console.log(response);               
+      }).catch((error) => {                                   
+          console.log(error)
+      })
+  }  
 
 
 
@@ -83,13 +85,13 @@ const ProfileformComponent = () => {
         <Form.Group as={Col} controlId="firstname">
             <Form.Label className="font-weight-bold" >First Name*</Form.Label>
             <Form.Control type="firstname" placeholder="Enter First Name" 
-            // value={firstname} onChange={(event) => setfirstname(event.target.value)}
+             value={firstname} onChange={(event) => setfirstname(event.target.value)}
              required/>
             </Form.Group>
             <Form.Group as={Col} controlId="lastname">
             <Form.Label className="font-weight-bold">Last Name*</Form.Label>
             <Form.Control type="lastname" placeholder="Enter Last Name" 
-            // value={lastname} onChange={(event) => setlastname(event.target.value)} 
+            value={lastname} onChange={(event) => setlastname(event.target.value)} 
             required/>
             </Form.Group>
         </Form.Row>
@@ -97,14 +99,14 @@ const ProfileformComponent = () => {
         <Form.Group class="mt-2 md-2" controlId="email">
             <Form.Label className="font-weight-bold">Email* </Form.Label>
             <Form.Control placeholder="Enter Email" 
-            // value={email} onChange={(event) => setemail(event.target.value)} 
+            value={email} onChange={(event) => setemail(event.target.value)} 
             required/>
         </Form.Group>
         <hr className="mt-4"/>
         <Form.Group class="mt-2 md-2" controlId="formGridAddress1">
             <Form.Label className="font-weight-bold">Address*</Form.Label>
             <Form.Control placeholder="Your Address" 
-            // value={address} onChange={(event) => setaddress(event.target.value)} 
+            value={address} onChange={(event) => setaddress(event.target.value)} 
             />
         </Form.Group>
 
@@ -112,21 +114,21 @@ const ProfileformComponent = () => {
             <Form.Group as={Col} controlId="formGridCity">
             <Form.Label className="font-weight-bold">City* </Form.Label>
             <Form.Control 
-            // value={city} onChange={(event) => setcity(event.target.value)}
+            value={city} onChange={(event) => setcity(event.target.value)}
             />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridState">
             <Form.Label className="font-weight-bold">State* </Form.Label>
             <Form.Control 
-            // value={state} onChange={(event) => setstate(event.target.value)}
+            value={state} onChange={(event) => setstate(event.target.value)}
             />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
             <Form.Label className="font-weight-bold">Zip* </Form.Label>
             <Form.Control  
-            // value={zip} onChange={(event) => setzip(event.target.value)}
+            value={zip} onChange={(event) => setzip(event.target.value)}
             />
             </Form.Group>
         </Form.Row>
@@ -136,12 +138,12 @@ const ProfileformComponent = () => {
         <Form.Group class="mt-2 md-2" controlId="formGridPhone">
             <Form.Label className="font-weight-bold">Phone no.</Form.Label>
             <Form.Control placeholder="Enter your Phone no." 
-            // value={address} onChange={(event) => setaddress(event.target.value)} 
+            value={phone} onChange={(event) => setaddress(event.target.value)} 
             />
         </Form.Group>
 
         <Button className="mt-2" style={{color:"skyblue"}} variant="dark" type="submit" 
-        // onClick={settingrequest} 
+        onClick={settingrequest} 
         onClick={profileurl}
         >
             Save Settings
