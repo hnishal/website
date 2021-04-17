@@ -5,14 +5,14 @@ import Footer from './Footer';
 import NavComponent from './Nav';
 import axios from 'axios';
 const ProfileformComponent = ({user_id}) => {
-
+    console.log(user_id)
   // const [userid,setuserid]=useState("")
   const [firstname, setfirstname] = useState("")
   const [lastname, setlastname] = useState("")
   const [first_line, setfirst_line] = useState("")
   const [city, setcity] = useState("")
   const [state, setstate] = useState("")
-  const [zip, setzip] = useState("")
+  const [zip, setzip] = useState(0)
   const [country, setcountry] = useState("")
   const [phoneno,setphoneno]=useState(0)
   const [edu_country,setedu_country]=useState("")
@@ -26,7 +26,7 @@ const ProfileformComponent = ({user_id}) => {
 
       const setting_info = {
         info  : {
-            user_id:user_id,
+            user_id:Number(user_id),
             name:{
               first_name:firstname,
               last_name:lastname
@@ -36,7 +36,7 @@ const ProfileformComponent = ({user_id}) => {
               first_line:first_line,
               city:city,
               state:state,
-              zipcode:zip,
+              zipcode:Number(zip),
               country:country
             },
             contact_no:Number(phoneno),
@@ -47,6 +47,7 @@ const ProfileformComponent = ({user_id}) => {
             finish_year:Number(end_year)
           }
       }
+      console.log(setting_info)
       axios.post('/api/add_user_info', setting_info)
       .then((response) => {
           console.log(response);               
@@ -124,7 +125,7 @@ const ProfileformComponent = ({user_id}) => {
 
             <Form.Group as={Col} controlId="formGridZip">
             <Form.Label className="font-weight-bold">Zip* </Form.Label>
-            <Form.Control  
+            <Form.Control  type="number"
             value={zip} onChange={(event) => setzip(event.target.value)}
             />
             </Form.Group>

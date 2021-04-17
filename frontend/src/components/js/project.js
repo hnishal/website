@@ -15,7 +15,7 @@ const ProjectComponent = ({user_id}) => {
 
       const bid_info = {
         bid: {
-            user_id:user_id,
+            user_id:Number(user_id),
             project_id:Number(project_id),
             amount:Number(amount),
             days:Number(days),

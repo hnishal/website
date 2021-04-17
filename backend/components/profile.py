@@ -53,12 +53,15 @@ def check_login(profile):
 
 def show_profile(id):
     try:
+        print("Showing profile:" + str(id))
         myquery= {"user_id": id}
         temp=db.profiles.find_one(myquery)
+        del temp["_id"]
         temp1=db.user_info.find_one(myquery)
+        del temp1["_id"]
         del temp["password"]
         temp2=temp | temp1
-        return json_util.dumps(temp2)
+        return json.dumps(temp2)
     except:
         return "profile not found"
 

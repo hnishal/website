@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-function SignupComponent({ setusername, setemail, setpwd, setuser_id ,type, settype}){
+function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user_id}){
 
     function settingsurl() {
         window.location = 'http://localhost:5000/settings';
@@ -36,9 +36,12 @@ function SignupComponent({ setusername, setemail, setpwd, setuser_id ,type, sett
         const hire = document.getElementById('hire')
         const work = document.getElementById('work')
         if(hire.checked==true){
+            localStorage.setItem('type', "employer")
             settype("employer")
         }
         else{
+            localStorage.setItem('type', "freelancer")
+
             settype("freelancer")
         }
         console.log(user_info)
@@ -48,19 +51,25 @@ function SignupComponent({ setusername, setemail, setpwd, setuser_id ,type, sett
                     console.log(response.data);
                     console.log(response.data.message)
                     if(response.data.result){
+                        localStorage.setItem('username', myusername)
+                        localStorage.setItem('email', myemail)
+                        localStorage.setItem('user_id', response.data.user_id)
+
                         setusername(myusername)
                         setemail(myemail)
-                        setpwd(mypwd)
+                        console.log(response.data.user_id)
                         setuser_id(response.data.user_id)
-                        alert("Signed Up");
+                        alert("Signed up");
                         settingsurl();
                     }                
                 }).catch((error) => {
                     console.log(error)
                 })
         } else {
+            
             alert("Confirm password should be equal to password");
         }
+        console.log(user_id)
     }
     
     return<div class="mt-5">

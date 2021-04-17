@@ -5,7 +5,34 @@ import image18 from '../../image/18.jpg';
 import '../css/Profile.css';
 import Footer from './Footer';
 import NavComponent from './Nav';
-const ProfileComponent = () => {
+const ProfileComponent = ({user_id}) => {
+
+    let profile = localStorage.getItem('profile') || {};
+        console.log("Hello chimkandi")
+        console.log(user_id)
+        let id = Number(user_id);
+       axios.put(`/api/view_profile/${id}`)
+       .then((response)=> {
+           profile = JSON.parse(response.data)
+           console.log("Profile class:", typeof(profile))
+           localStorage.setItem('profile', profile)
+           console.log("Username", profile.username)
+
+           console.log("Response data:", JSON.parse(response.data));
+        //    setposts(response.data)
+        
+        //    profile=response.data
+        //    console.log("From Server: ", profile)
+       }).catch((error)=>{
+         console.log(error)
+       })
+       console.log("Profile is: ", profile)
+    console.log("Profile type is: ", typeof(profile))
+
+
+       console.log("Username", profile.username)
+
+
     return <div class="overflow-hidden">
          <div>
         <NavComponent/>
@@ -29,10 +56,13 @@ const ProfileComponent = () => {
                         <div className="col-md-7 col-lg-7"><br />
 
                             <div className="d-inline">
-                                <p>Name @Name <br /></p>
+                                <p>
+                                    
+                                    <br /></p>
 
                             </div>
-                                 Front end web developer <br />
+                            Name:
+                            {profile.username} Front end web developer <br />
                                  compelete paragraph <br />
                         </div>
                         <button style={{marginRight:"20%", color:"skyblue"}} className=" button btn btn-dark mr-5 ">Edit Profile</button>

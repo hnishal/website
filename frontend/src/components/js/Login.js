@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import '../css/Login.css';
 import axios from 'axios';
-const LoginComponent = ({username,pwd, setusername, setpwd}) => {
+const LoginComponent = ({username, setusername}) => {
 
     
     function dashboardurl() {
@@ -14,8 +14,8 @@ const LoginComponent = ({username,pwd, setusername, setpwd}) => {
 
     function loginrequest(event) {
         event.preventDefault()
+        localStorage.setItem('username', myusername)
         setusername(myusername)
-        setpwd(mypwd)
         const login_info = {
             loginInfo: {
                 username:myusername,

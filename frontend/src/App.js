@@ -12,29 +12,29 @@ import MyProjects from './components/js/MyProjects';
 import PostProjectComponent from './components/js/PostProject';
 import ProjectComponent from './components/js/project';
 import WorkingComponent from './components/js/HowWorks';
+import ProposalComponent from './components/js/proposal';
 
 const App = () => {
 
-  const[username,setusername]=useState('')
-  const[email,setemail]=useState('')
-  const[pwd,setpwd]=useState('')
-  const[user_id,setuser_id]=useState(0)
-  const[type,settype]=useState('')
+  const [username, setusername] = useState(localStorage.getItem( 'username' ) || '')
+  const [email, setemail] = useState(localStorage.getItem('email') ||'')
+  const [user_id, setuser_id] = useState(localStorage.getItem('user_id') || 0)
+  const [type, settype] = useState(localStorage.getItem('type') ||'')
   
 
   const login = () => {
     return (
-      <LoginComponent username={username} setusername={setusername} pwd={pwd} setpwd={setpwd}  />
+      <LoginComponent username={username} setusername={setusername}  />
     )
   } 
   const signup = () => {
     return (
-      <SignupComponent username={username} setusername={setusername} email={email} setemail={setemail} pwd={pwd} setpwd={setpwd} setuser_id={setuser_id} type={type} settype={settype}/>
+      <SignupComponent username={username} setusername={setusername} email={email} setemail={setemail} user_id={user_id} setuser_id={setuser_id} type={type} settype={settype}/>
     )
   } 
   const profile = () => {
     return(
-      <ProfileComponent />
+      <ProfileComponent  user_id={user_id}/>
     )
   }
   const dashboard = () => {
@@ -77,6 +77,11 @@ const App = () => {
       <MyProjects/>
     )
   }
+  const proposal = () => {
+    return(
+      <ProposalComponent/>
+    )
+  }
   const postproject = () => {
     return(
       <PostProjectComponent user_id={user_id}/>
@@ -100,6 +105,7 @@ const App = () => {
     <Route path="/myProjects" component={myprojects}/>
     <Route path="/project" component={project}/>
     <Route path="/howWorks" component={howWorks}/>
+    <Route path="/proposal" component={proposal}/>
     <Redirect to = "/" />
     </Switch>
     </BrowserRouter>

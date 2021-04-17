@@ -41,10 +41,12 @@ def run_routes(app):
         return jsonify(response), 201
 
 
-    @ app.route('/api/view_profile/<int:id>',methods=['GET'])
+    @ app.route('/api/view_profile/<int:id>',methods=['PUT'])
     def view_profile(id):
-        response = show_profile(id)
-        return response,201
+        print("On server:" + str(id))
+        response = show_profile(int(id))
+        print(type(response))
+        return jsonify(response),201
 
 
     @ app.route('/api/get_my_projects/<int:id>',methods=['PUT'])
@@ -90,7 +92,9 @@ def run_routes(app):
     @ app.route('/api/add_user_info',methods=['POST'])
     def add_user_info():
         json_request = request.get_json()
+        
         response=input_user_info(json_request["info"])
+        # print(json_request["info"])
         return jsonify(response),201
     
     @ app.route('/api/delete_bid',methods=['DELETE'])

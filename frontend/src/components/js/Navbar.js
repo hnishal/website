@@ -6,6 +6,10 @@ const NavbarComponent = () =>
   event.preventDefault();
   window.location = 'http://localhost:5000/login';
 }
+function signupurl(event) {
+  event.preventDefault();
+  window.location = 'http://localhost:5000/signup';
+}
 
   return (
   <Navbar variant="dark" bg="dark" expand="lg">
@@ -23,8 +27,8 @@ const NavbarComponent = () =>
       <Nav style={{color:"white"}} className="mr-auto ml-5">
         <Nav.Link  href="./howWorks">How it Works?</Nav.Link>
       </Nav>
-      <Button style={{color:"skyblue"}} variant="outline-primary" className="mr-3" onClick={(event) =>{loginurl(event)}}>Hire</Button>{' '}
-      <Button style={{color:"skyblue"}} variant="outline-primary" className="mr-3" onClick={(event) =>{loginurl(event)}}>Work</Button>{' '}
+      <Button style={{color:"skyblue"}} variant="outline-primary" className="mr-3" onClick={(event) =>{loginurl(event)}}>Login</Button>{' '}
+      <Button style={{color:"skyblue"}} variant="outline-primary" className="mr-3" onClick={(event) =>{signupurl(event)}}>Signup</Button>{' '}
 
     </Navbar.Collapse>
   </Navbar>
