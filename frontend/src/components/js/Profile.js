@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {  Card, Button, Form, Col } from 'react-bootstrap';
 import axios from 'axios';
 import image18 from '../../image/18.jpg';
@@ -6,18 +6,19 @@ import '../css/Profile.css';
 import Footer from './Footer';
 import NavComponent from './Nav';
 const ProfileComponent = ({user_id}) => {
-
-    let profile = localStorage.getItem('profile') || {};
+    const [profile, setprofile] = useState(localStorage.getItem('profile') || {});
         console.log("Hello chimkandi")
         console.log(user_id)
         let id = Number(user_id);
-       axios.put(`/api/view_profile/${id}`)
+    
+    useEffect(() => {
+        axios.put(`/api/view_profile/${id}`)
        .then((response)=> {
-           profile = JSON.parse(response.data)
-           console.log("Profile class:", typeof(profile))
-           localStorage.setItem('profile', profile)
-           console.log("Username", profile.username)
-
+        //    profile = JSON.parse(response.data)
+        //    console.log("Profile class:", typeof(profile))
+           localStorage.setItem('profile', JSON.parse(response.data))
+           setprofile(JSON.parse(response.data))
+        //    console.log("Username", profile.username)
            console.log("Response data:", JSON.parse(response.data));
         //    setposts(response.data)
         
@@ -26,11 +27,15 @@ const ProfileComponent = ({user_id}) => {
        }).catch((error)=>{
          console.log(error)
        })
+        
+
        console.log("Profile is: ", profile)
     console.log("Profile type is: ", typeof(profile))
 
 
        console.log("Username", profile.username)
+    }, [])
+       
 
 
     return <div class="overflow-hidden">
@@ -62,7 +67,14 @@ const ProfileComponent = ({user_id}) => {
 
                             </div>
                             Name:
-                            {profile.username} Front end web developer <br />
+                            {profile !== {} ? <div>
+                                {profile.username}<br />
+                                {profile.contact_no}
+                                {/* {profile['name']['first_name']} {profile['name']['last_name']} */}
+                            </div>: <div></div>
+                            }
+                            
+                             Front end web developer <br />
                                  compelete paragraph <br />
                         </div>
                         <button style={{marginRight:"20%", color:"skyblue"}} className=" button btn btn-dark mr-5 ">Edit Profile</button>
@@ -126,3 +138,5 @@ const ProfileComponent = ({user_id}) => {
     </div>
 }
 export default ProfileComponent;
+
+
