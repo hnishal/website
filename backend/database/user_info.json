@@ -3,34 +3,43 @@
     "validator": {
       "$jsonSchema": {
         "bsonType": "object",
-        "required": ["user_id","name","contact_no","address", "edu_country", "edu_university", "edu_degree", "start_year", "finish_year"],
+        "required": ["user_id","first_name","last_name","contact_no","firstline","city","state","country","zipcode", "edu_country", "edu_university", "edu_degree", "start_year", "finish_year"],
         "properties": {
           "user_id":{
             "bsonType": "number",
             "description": "user_id of user"
           },
-          "name": {
-            "bsonType": "object",
-            "description": "fullname of user",
-            "properties": {
-                "first_name": { "bsonType": "string" },
-                "last_name": { "bsonType": "string" }
-            }
+          "first_name": {
+            "bsonType": "string",
+            "description": "fullname of user"
+          },
+          "last_name": {
+            "bsonType": "string",
+            "description": "fullname of user"
           },
           "contact_no": {
             "bsonType": "number",
             "description": "Una representación Hash de la contraseña"
           },
-          "address": {
-            "bsonType": "object",
-            "description": "full-address of user",
-            "properties": {
-                "firstline" : {"bsonType":"string"},
-                "city": { "bsonType": "string" },
-                "state": { "bsonType": "string"},
-                "country": { "bsonType": "string" },
-                "zipcode" : { "bsonType": "number" }
-            }
+          "firstline": {
+            "bsonType": "string",
+            "description": "full-address of user"
+          },
+          "city": {
+            "bsonType": "string",
+            "description": "full-address of user"
+          },
+          "state": {
+            "bsonType": "string",
+            "description": "full-address of user"
+          },
+          "country": {
+            "bsonType": "string",
+            "description": "full-address of user"
+          },
+          "zipcode": {
+            "bsonType": "number",
+            "description": "full-address of user"
           },
           "edu_country": {
             "bsonType": "string",

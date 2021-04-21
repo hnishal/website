@@ -10,9 +10,14 @@ import time
 class User_info:
     def __init__(self,info):
         self.user_id=info["user_id"]
-        self.name=info["name"]
+        self.first_name=info["first_name"]
+        self.last_name=info["last_name"]
         self.contact_no=info["contact_no"]
-        self.address=info["address"]
+        self.firstline=info["firstline"]
+        self.city=info["city"]
+        self.state=info["state"]
+        self.country=info["country"]
+        self.zipcode=info["zipcode"]
         self.edu_country=info["edu_country"]
         self.edu_university=info["edu_university"]
         self.edu_degree=info["edu_degree"]
