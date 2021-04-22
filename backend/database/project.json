@@ -30,7 +30,7 @@
             "description": "0 for project closed, 1 project open"
           },
           "date": {
-            "bsonType": "date",
+            "bsonType": "string",
             "description": "date project was posted"
           }
           

@@ -7,23 +7,15 @@ import Footer from './Footer';
 import NavComponent from './Nav';
 const ProfileComponent = ({user_id}) => {
     const [profile, setprofile] = useState(localStorage.getItem('profile') || {});
-        console.log("Hello chimkandi")
         console.log(user_id)
         let id = Number(user_id);
     
     useEffect(() => {
         axios.put(`/api/view_profile/${id}`)
        .then((response)=> {
-        //    profile = JSON.parse(response.data)
-        //    console.log("Profile class:", typeof(profile))
            localStorage.setItem('profile', JSON.parse(response.data))
            setprofile(JSON.parse(response.data))
-        //    console.log("Username", profile.username)
            console.log("Response data:", JSON.parse(response.data));
-        //    setposts(response.data)
-        
-        //    profile=response.data
-        //    console.log("From Server: ", profile)
        }).catch((error)=>{
          console.log(error)
        })
@@ -45,37 +37,26 @@ const ProfileComponent = ({user_id}) => {
         
         <div className="row">
             <div className=" ml-2 col-lg-8  col-md-11  col-sm-11 col-xs-12 sm-mt-2">
-                <Card className="mt-5 pt-5 ml-5 pl-5">
-                    <div className="d-flex">
+                <Card className="mt-5 pt-5 ml-2 pl-5">
+                    <div className="d-flex m-5">
                         <Card.Body >
                             <Card.Img id="img-18" variant="top" src={image18} />
-                            <Card.Text className="mt-5">
-                                I'm Online <br />
-                                $5 USD /hour <br />
-                                New Delhi, <a href="#">India</a> <br />
-                                Joined November 2,2020 <br />
-                                0 Recommendation <br />
-                            </Card.Text>
                         </Card.Body>
 
                         <div className="col-md-7 col-lg-7"><br />
 
                             <div className="d-inline">
-                                <p>
-                                    
-                                    <br /></p>
 
                             </div>
-                            Name:
                             {profile !== {} ? <div>
-                                {profile.username}<br />
-                                {profile.contact_no}
-                                {/* {profile['name']['first_name']} {profile['name']['last_name']} */}
+                                {profile.first_name+" "} {profile.last_name}<br/>
+                                {profile.firstline}<br/>
+                               {profile.city}<br/>
+                               {profile.state}<br/>
+                               {profile.country}<br/>
+                               {profile.zipcode}<br/>
                             </div>: <div></div>
                             }
-                            
-                             Front end web developer <br />
-                                 compelete paragraph <br />
                         </div>
                         <button style={{marginRight:"20%", color:"skyblue"}} className=" button btn btn-dark mr-5 ">Edit Profile</button>
                     </div>

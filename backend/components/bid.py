@@ -18,7 +18,8 @@ class Bid:
         self.proposal = bid['proposal']
         self.project_id = bid['project_id']
         self.user_id = bid['user_id']
-        self.date= datetime.today()
+        now=datetime.now()
+        self.date= now.strftime("%m/%d/%Y, %H:%M:%S")
 
 
 def create_bid(bid):

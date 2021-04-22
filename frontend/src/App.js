@@ -13,6 +13,7 @@ import PostProjectComponent from './components/js/PostProject';
 import ProjectComponent from './components/js/project';
 import WorkingComponent from './components/js/HowWorks';
 import ProposalComponent from './components/js/proposal';
+// import EditProfileComponent from './components/js/EditProfile';
 
 const App = () => {
 
@@ -24,7 +25,7 @@ const App = () => {
 
   const login = () => {
     return (
-      <LoginComponent username={username} setusername={setusername}  />
+      <LoginComponent   />
     )
   } 
   const signup = () => {
@@ -47,6 +48,11 @@ const App = () => {
       <ProjectComponent  user_id={user_id}/>
     )
   }
+  // const editProfile= () => {
+  //   return(
+  //     <EditProfileComponent />
+  //   )
+  // }
   const settings = () => {
     return(
       <ProfileformComponent user_id={user_id}/>
@@ -54,7 +60,7 @@ const App = () => {
   }
   const password = () => {
     return(
-      <PasswordComponent />
+      <PasswordComponent user_id={user_id}/>
     )
   }
   const home = () => {
@@ -74,7 +80,7 @@ const App = () => {
   }
   const myprojects = () => {
     return(
-      <MyProjects/>
+      <MyProjects user_id={user_id}/>
     )
   }
   const proposal = () => {
@@ -106,6 +112,7 @@ const App = () => {
     <Route path="/project" component={project}/>
     <Route path="/howWorks" component={howWorks}/>
     <Route path="/proposal" component={proposal}/>
+    {/* <Route path="/editProfile" component={editProfile}/> */}
     <Redirect to = "/" />
     </Switch>
     </BrowserRouter>

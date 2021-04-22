@@ -1,7 +1,7 @@
 import json
 from database.models import db
 from components.profile import Profile, create_profile, check_login, show_profile, change_password
-from components.project import Project, add_project, show_user_projects, close_project, keyword_search,category_search
+from components.project import Project, add_project, show_user_projects, close_project, keyword_search,category_search, show_all_projects
 from components.bid import Bid, create_bid, show_user_bids, show_project_bids, drop_bid
 from components.user_info import User_info, input_user_info
 from flask import Flask, jsonify, request, render_template
@@ -30,6 +30,7 @@ def run_routes(app):
 
     @ app.route('/api/post_project', methods=['POST'])
     def post_project():
+        print("adding project")
         json_request = request.get_json()
         response = add_project(json_request['project'])
         return jsonify(response), 201
@@ -40,6 +41,10 @@ def run_routes(app):
         response = create_bid(json_request['bid'])
         return jsonify(response), 201
 
+    @ app.route('/api/view_all_projects',methods=['PUT'])
+    def view_all_projects():
+        response=show_all_projects()
+        return response,201
 
     @ app.route('/api/view_profile/<int:id>',methods=['PUT'])
     def view_profile(id):
@@ -51,8 +56,8 @@ def run_routes(app):
 
     @ app.route('/api/get_my_projects/<int:id>',methods=['PUT'])
     def get_my_projects(id):
-        response = show_user_projects(id)
-        return response,201
+        response = show_user_projects(int(id))
+        return jsonify(response),201
 
 
     @ app.route('/api/get_my_bids/<int:id>',methods=['PUT'])
@@ -61,7 +66,7 @@ def run_routes(app):
         return response,201
 
     #to be implemented
-    @ app.route('/api/get_bids/<int:id>',methods=['GET'])
+    @ app.route('/api/get_bids/<int:id>',methods=['PUT'])
     def show_bids(id):
         response = show_project_bids(id)
         return response,201
@@ -74,18 +79,19 @@ def run_routes(app):
     @ app.route('/api/skillwise_search',methods=['GET'])
     def skillwise_search():
         json_request = request.get_json()
-        reponse=category_search(json_request["skill"])
-        return reponse,201
+        response=category_search(json_request["skill"])
+        return response,201
     
     @ app.route('/api/text_search',methods=['GET'])
     def text_search():
         json_request = request.get_json()
-        reponse=keyword_search(json_request["text"])
-        return reponse,201
+        response=keyword_search(json_request["text"])
+        return response,201
     
-    @ app.route('/api/password_change',methods=['PUT'])
+    @ app.route('/api/password_change',methods=['POST'])
     def password_change():
         json_request = request.get_json()
+        print(json_request)
         response=change_password(json_request["details"])
         return jsonify(response),201
     

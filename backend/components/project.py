@@ -20,7 +20,7 @@ class Project:
         self.skills = project['skills']
         self.status = "open"
         self.user_id = project['user_id']
-        self.date= datetime.today()
+        self.date= datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
         # add file upload
 
     def reopen_project(self):
@@ -44,9 +44,11 @@ def get_status(id):
 
 def add_project(project):
     global count
+    print("in add project")
     count += 1
     try:
         if(db.profiles.find_one({"user_id" : project['user_id']}) != None ):
+            print("after if")
             new_project = Project(project)
             new_project.project_id = count
             db.projects.insert_one(new_project.__dict__)
@@ -54,7 +56,7 @@ def add_project(project):
         else:
             return "no such profile exists"
     except:
-        return logging.exception("Error occured while printing GeeksforGeeks")
+        return logging.exception("Error!")
 
 def show_user_projects(id):
     try:
@@ -62,14 +64,30 @@ def show_user_projects(id):
         mycursor= db.projects.find(myquery)
         list1=[]
         for item in mycursor:
+            del item["_id"]
+            del item["skills"]
+            list1.append(item)
+        if not list1:
+            return "no data found"
+        else:
+            print(list1)
+            return (list1)
+    except:
+        return logging.exception("Error!")
+
+def show_all_projects():
+    try:
+        mycursor= db.projects.find()
+        list1=[]
+        for item in mycursor:
+            del item["_id"]
             list1.append(item)
         if not list1:
             return "no data found"
         else:
             return json_util.dumps(list1)
     except:
-        return logging.exception("Error occured while printing GeeksforGeeks")
-
+        return logging.exception("Error!")
 def category_search(skill):
     try:
         mycursor= db.projects.find()
@@ -83,17 +101,18 @@ def category_search(skill):
         else:
             return json_util.dumps(list1)
     except:
-        return logging.exception("Error occured while printing GeeksforGeeks")
+        return logging.exception("Error!")
 
 def keyword_search(text):
     try:
         mycursor=db.projects.find( { '$text': { '$search': text } } )
         list1=[]
         for item in mycursor:
+            del item["_id"]
             list1.append(item)
         if not list1:
             return "no data found"
         else:
             return json_util.dumps(list1)
     except:
-        return logging.exception("Error occured while printing GeeksforGeeks")
+        return logging.exception("Error!")

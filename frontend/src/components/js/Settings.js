@@ -9,7 +9,7 @@ const ProfileformComponent = ({user_id}) => {
   // const [userid,setuserid]=useState("")
   const [firstname, setfirstname] = useState("")
   const [lastname, setlastname] = useState("")
-  const [first_line, setfirst_line] = useState("")
+  const [firstline, setfirstline] = useState("")
   const [city, setcity] = useState("")
   const [state, setstate] = useState("")
   const [zip, setzip] = useState(0)
@@ -27,18 +27,13 @@ const ProfileformComponent = ({user_id}) => {
       const setting_info = {
         info  : {
             user_id:Number(user_id),
-            name:{
               first_name:firstname,
-              last_name:lastname
-            },
-            
-            address:{
-              first_line:first_line,
+              last_name:lastname,
+              firstline:firstline,
               city:city,
               state:state,
               zipcode:Number(zip),
-              country:country
-            },
+              country:country,
             contact_no:Number(phoneno),
             edu_country:edu_country,
             edu_university:university,
@@ -103,7 +98,7 @@ const ProfileformComponent = ({user_id}) => {
         <Form.Group class="mt-2 md-2" controlId="email">
             <Form.Label className="font-weight-bold">Address* </Form.Label>
             <Form.Control placeholder="Enter your Address" 
-            value={first_line} onChange={(event) => setfirst_line(event.target.value)} 
+            value={firstline} onChange={(event) => setfirstline(event.target.value)} 
             required/>
             
         </Form.Group>

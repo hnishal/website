@@ -1,9 +1,35 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { Form, Col, NavDropdown, Dropdown, DropdownButton, InputGroup, Row, Card, Table, Container } from 'react-bootstrap';
 import '../css/MyProjects.css';
+import axios from 'axios';
 import Footer from './Footer';
 import NavComponent from './Nav';
-const ProjectsComponent = () => {
+const ProjectsComponent = ({user_id}) => {
+
+            const [projectname, setprojectname] = useState(localStorage.getItem('projectname') || []);
+            console.log(user_id)
+                let id = Number(user_id);
+
+            useEffect(() => {
+                axios.put(`/api/get_my_projects/${id}`)
+            .then((response)=> {
+                console.log(response.data)
+                localStorage.setItem('projectname', (response.data))
+                setprojectname(response.data)
+                console.log("Response data:", response.data);
+            }).catch((error)=>{
+                console.log(error)
+            })
+            }, [])
+
+
+            // const projectlist=projectname.map((pro_name)=>{
+            //     return <div>
+            //         {pro_name.project_name}
+            //     </div>
+            //   })
+ 
+            
     return (
         <div className="overflow-hidden">
             <div>
@@ -56,7 +82,7 @@ const ProjectsComponent = () => {
   <tbody>
     <tr>
       <td>1</td>
-      <td>Mark</td>
+      {/* <td>{projectlist}</td> */}
       <td>Otto</td>
     </tr>
     <tr>

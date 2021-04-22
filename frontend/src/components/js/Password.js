@@ -1,31 +1,44 @@
-import React from 'react';
+import React,{useState} from 'react';
+import axios from 'axios';
 import { Form, Button, Col, Card } from 'react-bootstrap';
 import Footer from './Footer';
 import NavComponent from './Nav';
-const PasswordComponent = () => {
+const PasswordComponent = ({user_id}) => {
 
 
-    // const [degree,setdegree]=useState("")
+    const [old_password,setold_password]=useState("")
+    const [new_password,setnew_password]=useState("")
+    const [confirm_new_password,setconfirm_new_password] = useState("")
+
+    function check_pwd() {
+        return new_password === confirm_new_password;
+    }
   
-    // function settingrequest(event) {
-    //     event.preventDefault()
-  
-    //     const setting_info = {
-    //       info  : {
-    //           user_id:user_id,
-    //           name:{
-    //             first_name:firstname,
-    //             last_name:lastname
-    //           },
-              
-              
-    //     axios.put('/api/password_change', details)
-    //     .then((response) => {
-    //         console.log(response);               
-    //     }).catch((error) => {                                   
-    //         console.log(error)
-    //     })
-    // }
+    function passwordrequest(event) {
+        event.preventDefault()
+        
+        const password_info = {
+          details  : {
+              user_id:Number(user_id),
+              old_password:old_password,
+              new_password:new_password
+                }
+            }              
+        
+        if(check_pwd()){
+        axios.post('/api/password_change', password_info)
+        .then((response) => {
+            console.log(response);    
+            alert("Your password is changed")                          
+            }).catch((error) => {
+                console.log(error)
+            })
+        } else {
+
+        alert("Confirm password should be equal to password");
+        }
+        console.log(user_id)
+        }
     
  function Settingsurl(event) {
         event.preventDefault();
@@ -58,20 +71,20 @@ const PasswordComponent = () => {
                             <Form>
                                 <Form.Group controlId="currentpassword">
                                     <Form.Label>Current Password</Form.Label>
-                                    <Form.Control placeholder="" />
+                                    <Form.Control placeholder=""  value={old_password} onChange={(event) => setold_password(event.target.value)}/>
                                 </Form.Group>
                                 <Form.Group controlId="newpassword">
                                     <Form.Label>New Password</Form.Label>
-                                    <Form.Control placeholder="" />
+                                    <Form.Control placeholder="" value={new_password} onChange={(event) => setnew_password(event.target.value)} />
                                 </Form.Group>
-                                <Form.Group controlId="currentpassword">
-                                    <Form.Label>Current Password</Form.Label>
-                                    <Form.Control placeholder="" />
+                                <Form.Group controlId="confirm password">
+                                    <Form.Label>Confirm Password</Form.Label>
+                                    <Form.Control placeholder="" value={confirm_new_password} onChange={(event) => setconfirm_new_password(event.target.value)}/>
                                 </Form.Group>
 
 
 
-                                <Button style={{color:"skyblue"}} variant="dark" type="submit">
+                                <Button style={{color:"skyblue"}} variant="dark" type="submit" onClick={passwordrequest}>
                                     Save Settings
                                 </Button>
                             </Form>

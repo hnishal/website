@@ -44,6 +44,7 @@ def check_login(profile):
     try:
         profile_data = db.profiles.find_one({"username": profile["username"]})
         boolean = check_password_hash(profile_data["password"], profile["password"])
+        return boolean
         if boolean == True :
             return "login successful"
         else:
@@ -66,10 +67,13 @@ def show_profile(id):
         return "profile not found"
 
 def change_password(details):
-    myquery= {"user_id": details["user_id"]}
+    print(details)
+    myquery= {"user_id": int(details["user_id"])}
     temp=db.profiles.find_one(myquery)
-    if check_password_hash(temp["password"], details["old-password"]) == True:
-        db.profiles.update_one({"user_id": details["user_id"]}, {"$set": {"password": generate_password_hash(details["new-password"]).decode('utf-8')}})
+    print(temp["password"])
+    print(details["old_password"])
+    if check_password_hash(temp["password"], details["old_password"]) == True:
+        db.profiles.update_one({"user_id": details["user_id"]}, {"$set": {"password": generate_password_hash(details["new_password"]).decode('utf-8')}})
         return "password changed"
     else:
         return "wrong password entered"

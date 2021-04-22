@@ -7,16 +7,17 @@ const PostProjectComponent = ({user_id})=>{
   const [project_name,setproject_name]=useState("")
   const [project_more_info,setproject_more_info]=useState("")
   const [project_skills,setproject_skills]=useState([])
-
+  const [skillstr, setskillstr] = useState("")
   function postprojectrequest(event) {
       event.preventDefault()
-
+      console.log("skills: ", skillstr )
+      setproject_skills(skillstr.split(","))
       const postproject_info = {
         project: {
-            user_id:user_id,
+            user_id:Number(user_id),
             project_name:project_name,
             description:project_more_info,
-            skills:project_skills
+            skills: skillstr.split(",")
           }
       }
       axios.post('/api/post_project', postproject_info)
@@ -25,7 +26,11 @@ const PostProjectComponent = ({user_id})=>{
       }).catch((error) => {                                   
           console.log(error)
       })
+      myProjecturl();
   }  
+  function myProjecturl() {
+   window.location = 'http://localhost:5000/myProjects';
+ }
 
   return(
       <div className="bla" >
@@ -48,7 +53,7 @@ const PostProjectComponent = ({user_id})=>{
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
     <h4 className="mt-5">Skills required</h4>
-    <Form.Control as="textarea" placeholder="e.g.javascript,python etc." value={project_skills} onChange={(event) => setproject_skills(event.target.value)} rows={3} required/>
+    <Form.Control as="textarea" placeholder="e.g.javascript,python etc." value={skillstr} onChange={(event) => setskillstr(event.target.value)} rows={3} required/>
   </Form.Group>
   <div>
   <hr/>

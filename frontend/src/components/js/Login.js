@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import '../css/Login.css';
 import axios from 'axios';
-const LoginComponent = ({username, setusername}) => {
+const LoginComponent = () => {
 
     
     function dashboardurl() {
@@ -11,25 +11,32 @@ const LoginComponent = ({username, setusername}) => {
 
     const [myusername, setmyusername] = useState("")
     const [mypwd, setmypwd] = useState("")
-
+    const login_info = {
+        loginInfo: {
+            username: myusername,
+            password: mypwd
+        }
+    }
     function loginrequest(event) {
         event.preventDefault()
         localStorage.setItem('username', myusername)
-        setusername(myusername)
-        const login_info = {
-            loginInfo: {
-                username:myusername,
-                password: mypwd
-            }
-        }
+        localStorage.setItem('pwd',mypwd)
+        
+        
     
         axios.post('/api/login', login_info)
         .then((response) => {
-            console.log(response);               
+            console.log(response);   
+            if(response.data == true){
+                dashboardurl()
+            }  
+            else{
+                alert("Login unsuccessful")
+            }          
         }).catch((error) => {                                   
             console.log(error)
         })
-        dashboardurl()
+        
     }   
 
     return (
@@ -58,7 +65,7 @@ const LoginComponent = ({username, setusername}) => {
                 <div class="email-login" style={{ backgroundColor: "#ffffff" }}><input type="email" class="email-imput form-control" required value={myusername} onChange={(event) => setmyusername(event.target.value)}
                     style={{ marginTop: "10px" }} required="" placeholder="Email" minlength="6" /><input type="password"
                         class="password-input form-control" style={{ marginTop: "10px" }} required="" placeholder="Password" 
-                        minlength="6" /></div>
+                        minlength="6"  required value={mypwd} onChange={(event) => setmypwd(event.target.value)}/></div>
                 <div class="submit-row" style={{ marginBottom: "8px", paddingTop: "0px" }}><button
                     class="btn btn-dark btn-block box-shadow " id="submit-id-submit" type="submit" style={{ color: "skyblue" }} onClick={loginrequest}>Login</button>
                     <div class="d-flex justify-content-between">

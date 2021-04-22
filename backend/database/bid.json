@@ -30,7 +30,7 @@
             "description": "unique id of bidder"
           },
           "date": {
-            "bsonType": "date",
+            "bsonType": "string",
             "description": "date project was posted"
           }
         }
