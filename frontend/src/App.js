@@ -13,7 +13,7 @@ import PostProjectComponent from './components/js/PostProject';
 import ProjectComponent from './components/js/project';
 import WorkingComponent from './components/js/HowWorks';
 import ProposalComponent from './components/js/proposal';
-// import EditProfileComponent from './components/js/EditProfile';
+import SearchprojectComponent from './components/js/SearchProjects';
 
 const App = () => {
 
@@ -43,16 +43,16 @@ const App = () => {
       <DashboardComponent />
     )
   }
+  const SearchProjects= () => {
+    return(
+      <SearchprojectComponent/>
+    )
+  }
   const project= () => {
     return(
       <ProjectComponent  user_id={user_id}/>
     )
   }
-  // const editProfile= () => {
-  //   return(
-  //     <EditProfileComponent />
-  //   )
-  // }
   const settings = () => {
     return(
       <ProfileformComponent user_id={user_id}/>
@@ -112,7 +112,7 @@ const App = () => {
     <Route path="/project" component={project}/>
     <Route path="/howWorks" component={howWorks}/>
     <Route path="/proposal" component={proposal}/>
-    {/* <Route path="/editProfile" component={editProfile}/> */}
+    <Route path="/SearchProjects"  component={SearchProjects}/>
     <Redirect to = "/" />
     </Switch>
     </BrowserRouter>

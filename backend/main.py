@@ -22,6 +22,8 @@ run_routes(app)
 @ app.route('/postProject')
 @ app.route('/project')
 @ app.route('/howWorks')
+@ app.route('/SearchProjects')
+
 def hello_world():
     return render_template('index.html')
 

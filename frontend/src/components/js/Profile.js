@@ -28,7 +28,10 @@ const ProfileComponent = ({user_id}) => {
        console.log("Username", profile.username)
     }, [])
        
-
+    function editProfileurl(event) {
+        event.preventDefault();
+       window.location = 'http://localhost:5000/editProfile';
+     }
 
     return <div class="overflow-hidden">
          <div>
@@ -58,7 +61,6 @@ const ProfileComponent = ({user_id}) => {
                             </div>: <div></div>
                             }
                         </div>
-                        <button style={{marginRight:"20%", color:"skyblue"}} className=" button btn btn-dark mr-5 ">Edit Profile</button>
                     </div>
                 </Card>
             </div>

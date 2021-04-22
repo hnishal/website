@@ -25,6 +25,7 @@ class User_info:
         self.finish_year=info["finish_year"]
 
 
+
 def input_user_info(data):
     info=User_info(data)
     db.user_info.insert_one(info.__dict__)
