@@ -2,10 +2,19 @@ import React from 'react';
 import {Nav,Navbar,FormControl,Button,Form} from 'react-bootstrap';
 import '../css/Nav.css';
 const NavComponent=()=>{
+  
+  function SearchProjectsurl(event) {
+    event.preventDefault();
+   window.location = 'http://localhost:5000/SearchProjects';
+ }
   function postProjecturl(event) {
     event.preventDefault();
    window.location = 'http://localhost:5000/postProject';
  }
+ function logoutrequest(event) {
+  event.preventDefault();
+ window.location = 'http://localhost:5000/';
+}
 return(
 <div>
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -14,8 +23,9 @@ return(
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
     <Form inline>
-    <FormControl type="text" placeholder="Search" className="mr-2" />
-      <Button variant="outline-success" >Search</Button>
+    {/* <FormControl type="text" placeholder="Search" className="mr-2" />
+      <Button variant="outline-success" >Search</Button> */}
+      <button class="btn btn-primary mr-5" onClick={SearchProjectsurl}>Browse</button>
     </Form>
     <div className="pl-5 pt-2 d-flex">
     <i style={{color:"white"}} className="mt-1 fa fa-fw fa-file"></i>
@@ -34,7 +44,7 @@ return(
     <a href="#"><i class="fa fa-fw fa-bell mr-4 fa-lg mt-2" ></i></a>
   <a href="#"><i class="fa fa-fw fa-commenting mr-4 fa-lg mt-2 "></i></a>   
   <button class="btn btn-primary mr-5" onClick={(event) => { postProjecturl(event) }}>Post a Project</button>
-  <a href="#"><i class="fa fa-fw fa-sign-in mr-5 pr-5 fa-lg mt-2">Signed</i></a>  
+  <a href="#"><i class="fa fa-fw fa-sign-in mr-5 pr-5 fa-lg mt-2 " onClick={logoutrequest} >LogOut</i></a>  
     </Nav>
   </Navbar.Collapse>
 </Navbar>

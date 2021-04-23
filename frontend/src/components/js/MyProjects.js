@@ -1,12 +1,12 @@
 import React,{useState, useEffect} from 'react';
-import { Form, Col, NavDropdown, Dropdown, DropdownButton, InputGroup, Row, Card, Table, Container } from 'react-bootstrap';
+import { Form, Col, NavDropdown, InputGroup, Table} from 'react-bootstrap';
 import '../css/MyProjects.css';
 import axios from 'axios';
 import Footer from './Footer';
 import NavComponent from './Nav';
 const ProjectsComponent = ({user_id}) => {
 
-            const [projectname, setprojectname] = useState(localStorage.getItem('projectname') || []);
+            const [projectlist, setprojectlist] = useState([]);
             console.log(user_id)
                 let id = Number(user_id);
 
@@ -14,21 +14,20 @@ const ProjectsComponent = ({user_id}) => {
                 axios.put(`/api/get_my_projects/${id}`)
             .then((response)=> {
                 console.log(response.data)
-                localStorage.setItem('projectname', (response.data))
-                setprojectname(response.data)
+                // localStorage.setItem('projectname', response.data)
+                if (response.data != "no data found")
+                {setprojectlist(response.data)}
                 console.log("Response data:", response.data);
             }).catch((error)=>{
                 console.log(error)
             })
             }, [])
 
-
-            // const projectlist=projectname.map((pro_name)=>{
-            //     return <div>
-            //         {pro_name.project_name}
-            //     </div>
-            //   })
- 
+    const projects = projectlist.map((pro_name,index) => {
+        return <tr key={index}>
+            <td>{pro_name.project_name}</td>
+            </tr>
+    })
             
     return (
         <div className="overflow-hidden">
@@ -71,26 +70,14 @@ const ProjectsComponent = ({user_id}) => {
                 </NavDropdown>
             </div>
             <div className="mt-2 ml-5 pl-5 mr-5 pr-5">
-            <Table striped bordered hover variant="dark">
+            <Table style={{textAlign:"center"}}striped bordered hover variant="dark">
   <thead>
     <tr>
       <th>Project Name</th>
-      <th>Total Bid</th>
-      <th>My Bid</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      {/* <td>{projectlist}</td> */}
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
- 
-    </tr>
+    {projects.length ? <div>{projects}</div> : <h1>No projects found</h1>}
   </tbody>
 </Table>
   </div> 

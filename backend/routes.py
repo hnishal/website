@@ -76,17 +76,19 @@ def run_routes(app):
         response = close_project(id)
         return jsonify(response),201
 
-    @ app.route('/api/skillwise_search',methods=['GET'])
-    def skillwise_search():
-        json_request = request.get_json()
-        response=category_search(json_request["skill"])
-        return response,201
+    # @ app.route('/api/skillwise_search',methods=['POST'])
+    # def skillwise_search():
+    #     json_request = request.get_json()
+    #     response=category_search(json_request["skill"])
+    #     return response,201
     
-    @ app.route('/api/text_search',methods=['GET'])
+    @ app.route('/api/text_search',methods=['POST'])
     def text_search():
+        print("Text Search")
         json_request = request.get_json()
         response=keyword_search(json_request["text"])
-        return response,201
+        print(response)
+        return jsonify(response),201
     
     @ app.route('/api/password_change',methods=['POST'])
     def password_change():

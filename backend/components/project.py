@@ -65,13 +65,13 @@ def show_user_projects(id):
         list1=[]
         for item in mycursor:
             del item["_id"]
-            del item["skills"]
+            # del item["skills"]
             list1.append(item)
         if not list1:
             return "no data found"
         else:
             print(list1)
-            return (list1)
+            return list1
     except:
         return logging.exception("Error!")
 
@@ -105,14 +105,16 @@ def category_search(skill):
 
 def keyword_search(text):
     try:
+        print("Finding projects")
         mycursor=db.projects.find( { '$text': { '$search': text } } )
         list1=[]
         for item in mycursor:
             del item["_id"]
             list1.append(item)
         if not list1:
+            print("No projects found")
             return "no data found"
         else:
-            return json_util.dumps(list1)
+            return list1
     except:
         return logging.exception("Error!")

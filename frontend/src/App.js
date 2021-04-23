@@ -21,6 +21,8 @@ const App = () => {
   const [email, setemail] = useState(localStorage.getItem('email') ||'')
   const [user_id, setuser_id] = useState(localStorage.getItem('user_id') || 0)
   const [type, settype] = useState(localStorage.getItem('type') ||'')
+  const [project_id,setproject_id] = useState(localStorage.getItem('project_id') || 0)
+
   
 
   const login = () => {
@@ -45,12 +47,12 @@ const App = () => {
   }
   const SearchProjects= () => {
     return(
-      <SearchprojectComponent/>
+      <SearchprojectComponent setproject_id={setproject_id} />
     )
   }
   const project= () => {
     return(
-      <ProjectComponent  user_id={user_id}/>
+      <ProjectComponent  user_id={user_id} project_id={project_id}/>
     )
   }
   const settings = () => {
