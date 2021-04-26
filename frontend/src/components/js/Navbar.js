@@ -20,10 +20,6 @@ function signupurl(event) {
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav ml-3">
-      <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-success">Search</Button>
-      </Form>
       <Nav style={{color:"white"}} className="mr-auto ml-5">
         <Nav.Link  href="./howWorks">How it Works?</Nav.Link>
       </Nav>

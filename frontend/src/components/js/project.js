@@ -1,15 +1,26 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import { Navbar,Button,Card, ProgressBar } from 'react-bootstrap';
 import NavComponent from './Nav';
 import Footer from './Footer';
-const ProjectComponent = ({user_id}) => {
+const ProjectComponent = ({user_id,project_id}) => {
 
   const [amount,setamount]=useState(0)
   const [days,setdays]=useState(0)
   const [proposal,setproposal]=useState("")
-  const [project_id,setproject_id]=useState(0)
-
+  const [project, setproject] = useState({})
+  console.log(project_id)
+  useEffect(() => {
+    axios.put(`/api/view_project/${Number(project_id)}`)
+    .then(response => {
+      if(response.data != "not found"){
+        setproject(response.data)
+      }
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }, [])
   function bidrequest(event) {
       event.preventDefault()
 
@@ -38,7 +49,7 @@ const ProjectComponent = ({user_id}) => {
         </div>
         <div >
            <Navbar className="mt-3 " bg="dark" expand="lg">
-               <h4 className="ml-5 p-2" style={{color:"white"}}>Project Name</h4>
+               <h4 className="ml-5 p-2" style={{color:"white"}}>{project.project_name}</h4>
             </Navbar>
         </div>
       <div  className="mt-2 ">
@@ -47,21 +58,18 @@ const ProjectComponent = ({user_id}) => {
           <Card>
               <div className="d-flex">
                   <h5 className=" pl-4 pt-4 pr-4 pd-2 mr-auto" >Project Details</h5>
-                  <h5 className=" pl-4 pt-4 pr-4 pd-2 ml-auto" >₹12,500.00 – 37,500.00 INR</h5>
             </div>
             <hr className="md-2"></hr>
     
             <Card.Body>
               <img class="img-responsive center-block d-block mx-auto "  />
               <Card.Text >
-                <p className="mt-1 ">website development for an aggregator platform containing payment gateway, chat facility and geolocation based search </p>
+                <p className="mt-1 ">{project.description}</p>
               </Card.Text>
               <div >
-                  <h5>Skills Required</h5>
+                  <h5 style={{fontWeight:"bold"}}>Skills Required</h5>
                 <div className="d-flex ">
-                <p className=" p-1 mr-2 mt-2 border border-dark">Java</p>
-                <p className=" p-1 mr-2 mt-2 border border-dark">Website</p>
-                <p className=" p-1 mr-2 mt-2 border border-dark">React</p>
+                <p className=" p-1 mr-2 mt-2 border border-dark">{project.skills}</p>  
               </div>
               </div>
             </Card.Body>
@@ -84,7 +92,7 @@ const ProjectComponent = ({user_id}) => {
       </div>
       <div class="row mr-auto ml-auto ml-5 pl-5 mt-5 pt-2 md-5">
       <div className="col-lg-8 col-md-6 col-sm-6 col-xs-2 ">
-          <Card>
+          {Number(project.user_id) == Number(user_id) ? <div style={{fontSize:"120%"}}>You can't bid here, as this is your project</div> : <Card>
               <Card.Header as="h5">Place a Bid on this Project</Card.Header>        
               <Card.Body>
               <img class="img-responsive center-block d-block mx-auto "  />
@@ -122,7 +130,7 @@ const ProjectComponent = ({user_id}) => {
               </div>
 
             </Card.Body>
-             </Card>
+             </Card>}
             </div>
             <div className="  mr-3 col-lg-3 col-sm-3 col-md-3 little-card">
           <Card style={{ width: '14rem' }}>

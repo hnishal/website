@@ -45,7 +45,7 @@ d = OrderedDict(d)
 
 db.command(d)
 
-db.projects.create_index([('name', 'text'),('description','text')], default_language='english')
+db.projects.create_index([('project_name', 'text'),('description','text')], default_language='english')
 
 
 #creating collection to store user information

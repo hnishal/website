@@ -72,7 +72,7 @@ const App = () => {
   }
   const account = () => {
     return(
-      <AccountComponent />
+      <AccountComponent user_id={user_id} />
     )
   }
   const howWorks = () => {

@@ -1,7 +1,7 @@
 import json
 from database.models import db
-from components.profile import Profile, create_profile, check_login, show_profile, change_password
-from components.project import Project, add_project, show_user_projects, close_project, keyword_search,category_search, show_all_projects
+from components.profile import Profile, create_profile, check_login, show_profile, change_password, delete_user
+from components.project import Project, add_project, show_user_projects, close_project, keyword_search,category_search, show_all_projects, showProject, deleteProject
 from components.bid import Bid, create_bid, show_user_bids, show_project_bids, drop_bid
 from components.user_info import User_info, input_user_info
 from flask import Flask, jsonify, request, render_template
@@ -41,10 +41,10 @@ def run_routes(app):
         response = create_bid(json_request['bid'])
         return jsonify(response), 201
 
-    @ app.route('/api/view_all_projects',methods=['PUT'])
+    @ app.route('/api/view_all_projects',methods=['GET'])
     def view_all_projects():
         response=show_all_projects()
-        return response,201
+        return jsonify(response),201
 
     @ app.route('/api/view_profile/<int:id>',methods=['PUT'])
     def view_profile(id):
@@ -110,3 +110,19 @@ def run_routes(app):
         json_request = request.get_json()
         response = drop_bid(json_request["data"])
         return jsonify(response),201
+
+    @ app.route('/api/disable_user/<int:id>', methods=['PUT'])
+    def disable_user(id):
+        print("Closing Account")
+        response = delete_user(int(id))
+        return jsonify(response),201
+
+    @ app.route('/api/delete_project/<int:id>', methods=['PUT'])
+    def removeProject(id):
+        response = deleteProject(int(id))
+        return jsonify(response), 201
+
+    @ app.route('/api/view_project/<int:id>', methods=['PUT'])
+    def viewProject(id):
+        response = showProject(int(id))
+        return jsonify(response), 201

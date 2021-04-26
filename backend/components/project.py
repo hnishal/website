@@ -85,7 +85,7 @@ def show_all_projects():
         if not list1:
             return "no data found"
         else:
-            return json_util.dumps(list1)
+            return list1
     except:
         return logging.exception("Error!")
 def category_search(skill):
@@ -118,3 +118,25 @@ def keyword_search(text):
             return list1
     except:
         return logging.exception("Error!")
+
+def showProject(id):
+    try:
+        myquery= {"project_id":id}
+        mycursor = db.projects.find_one(myquery)
+        if mycursor:
+            project = mycursor
+            del project['_id']
+            return project
+        else:
+            return "not found"
+    except:
+        return logging.exception("Error!")
+
+def deleteProject(id):
+    try:
+        myquery= {"project_id":id}
+        db.projects.delete_one(myquery)
+        return True
+    except:
+        return logging.exception("Error!")
+    

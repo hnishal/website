@@ -77,3 +77,14 @@ def change_password(details):
         return "password changed"
     else:
         return "wrong password entered"
+
+def delete_user(id):
+    try:
+        print("Deleting profile")
+        myquery= {"user_id":id}
+        db.profiles.delete_one(myquery)
+        db.bids.delete_many(myquery)
+        db.projects.delete_many(myquery)
+        return True
+    except:
+        return False

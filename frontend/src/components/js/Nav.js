@@ -44,7 +44,7 @@ return(
     <a href="#"><i class="fa fa-fw fa-bell mr-4 fa-lg mt-2" ></i></a>
   <a href="#"><i class="fa fa-fw fa-commenting mr-4 fa-lg mt-2 "></i></a>   
   <button class="btn btn-primary mr-5" onClick={(event) => { postProjecturl(event) }}>Post a Project</button>
-  <a href="#"><i class="fa fa-fw fa-sign-in mr-5 pr-5 fa-lg mt-2 " onClick={logoutrequest} >LogOut</i></a>  
+  <a className="mr-5 pr-5 fa-lg mt-2 " onClick={logoutrequest} >LogOut</a>  
     </Nav>
   </Navbar.Collapse>
 </Navbar>

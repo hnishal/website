@@ -25,7 +25,7 @@ const ProjectsComponent = ({user_id}) => {
 
     const projects = projectlist.map((pro_name,index) => {
         return <tr key={index}>
-            <td>{pro_name.project_name}</td>
+            <td className="text-align-center">{pro_name.project_name}</td>
             </tr>
     })
             

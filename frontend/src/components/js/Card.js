@@ -15,7 +15,7 @@ const CardComponent = () =>
                 <Card >
                     <Card.Img className="img-responsive center-block" className="img-4" variant="top" src={image4} />
                     <Card.Body style={{ backgroundColor: "black" }} className=" body-color text-white">
-                        <Card.Title className="colour text-center mt-4" ><a className="colour" href="#" >Development</a></Card.Title>
+                        <Card.Title className="colour text-center mt-4" ><a className="colour" href="https://en.wikipedia.org/wiki/Software_development" >Development</a></Card.Title>
 
                     </Card.Body>
 
@@ -23,7 +23,7 @@ const CardComponent = () =>
                 <Card>
                     <Card.Img className="img-responsive center-block" className="img-6" variant="top" src={image6} />
                     <Card.Body style={{ backgroundColor: "black" }} className=" text-white">
-                        <Card.Title className="text-center mt-4"><a className="colour" href="#" >Commmunication</a></Card.Title>
+                        <Card.Title className="text-center mt-4"><a className="colour" href="https://en.wikipedia.org/wiki/Communication" >Commmunication</a></Card.Title>
 
                     </Card.Body>
 
@@ -31,7 +31,7 @@ const CardComponent = () =>
                 <Card>
                     <Card.Img className="img-responsive center-block" className="img-7" variant="top" src={image7} />
                     <Card.Body style={{ backgroundColor: "black" }} className=" text-white">
-                        <Card.Title className="text-center mt-4"><a className="colour" href="#" >Creativity</a></Card.Title>
+                        <Card.Title className="text-center mt-4"><a className="colour" href="https://en.wikipedia.org/wiki/Creativity" >Creativity</a></Card.Title>
 
                     </Card.Body>
 
@@ -42,7 +42,7 @@ const CardComponent = () =>
                 <Card>
                     <Card.Img className="img-responsive center-block" className="img-8" variant="top" src={image8} />
                     <Card.Body style={{ backgroundColor: "black" }} className="text-white">
-                        <Card.Title className="  text-center mt-4"><a className="colour" href="#" >Development</a></Card.Title>
+                        <Card.Title className="  text-center mt-4"><a className="colour" href="https://en.wikipedia.org/wiki/Binary" >Binary</a></Card.Title>
 
                     </Card.Body>
 
@@ -50,7 +50,7 @@ const CardComponent = () =>
                 <Card>
                     <Card.Img className="img-responsive center-block" className="img-9" variant="top" src={image9} />
                     <Card.Body style={{ backgroundColor: "black" }} className="text-white">
-                        <Card.Title className=" text-center mt-4"><a className="colour" href="#" >Big Data</a></Card.Title>
+                        <Card.Title className=" text-center mt-4"><a className="colour" href="https://en.wikipedia.org/wiki/Big_data" >Big Data</a></Card.Title>
 
                     </Card.Body>
 
@@ -58,7 +58,7 @@ const CardComponent = () =>
                 <Card>
                     <Card.Img className="img-responsive center-block" className="img-10" variant="top" src={image10} />
                     <Card.Body style={{ backgroundColor: "black" }} className="text-white">
-                        <Card.Title className=" text-center mt-4"><a className="colour" href="#" >Content-Writing</a></Card.Title>
+                        <Card.Title className=" text-center mt-4"><a className="colour" href="https://en.wikipedia.org/wiki/Website_content_writer" >Content-Writing</a></Card.Title>
 
                     </Card.Body>
 

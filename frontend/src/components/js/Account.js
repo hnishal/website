@@ -2,7 +2,34 @@ import React from 'react';
 import {  Button, Card ,Accordion} from 'react-bootstrap';
 import Footer from './Footer';
 import NavComponent from './Nav';
-const AccountComponent = () => {
+import axios from 'axios';
+const AccountComponent = ({user_id}) => {
+  
+    function closeaccountrequest(event) {
+        event.preventDefault()
+
+       
+        let id = Number(user_id)
+        
+        console.log(id)
+        axios.put(`/api/disable_user/${id}`)
+        .then((response) => {
+            console.log(response);   
+            if(response.data){
+                homeurl();
+            }  else{
+                alert("Unable to close account")
+            }          
+        }).catch((error) => {                                   
+            console.log(error)
+        })
+        
+    } 
+    function homeurl() {
+        window.location = 'http://localhost:5000/';
+    } 
+  
+  
     function passwordurl(event) {
         event.preventDefault();
         window.location = 'http://localhost:5000/password';
@@ -52,7 +79,7 @@ const AccountComponent = () => {
                     <Accordion className="mt-4" defaultActiveKey="0">
                         <Card className="mt-2 ">
                             <h5 className="ml-4 mr-4 mt-4 md-5">Close Account</h5>
-                            <Accordion.Toggle style={{color:"skyblue"}} className="ml-4 mr-4 md-4 mt-2" as={Button} variant="dark" eventKey="0">
+                            <Accordion.Toggle style={{color:"skyblue"}} className="ml-4 mr-4 md-4 mt-2" as={Button} variant="dark" eventKey="0" >
                                 Close Account
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="0">
@@ -96,7 +123,7 @@ const AccountComponent = () => {
                             </div>
                             <p className="font-weight-bold mt-4 md-2">Your feedback is valuable to us:</p>   
                             <div class="mb-3">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
                             </div>
                             <p className="font-weight-bold">Can we contact you for more details?</p>    
                             <div className="d-flex">
@@ -121,7 +148,7 @@ const AccountComponent = () => {
                                 <li>More importantly - We'll miss you!</li>
                             </ul>
 
-                            <button style={{color:"skyblue"}} className="btn btn-dark mt-4">Close My Account</button>
+                            <button style={{color:"skyblue"}} className="btn btn-dark mt-4" onClick={closeaccountrequest}>Close My Account</button>
                                  </Card.Body>
                             </Accordion.Collapse>
                         </Card>

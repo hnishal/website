@@ -9,21 +9,21 @@ const ListComponent = () =>
         <Table striped bordered hover variant="light">
           <tbody>
             <tr >
-              <td><a className="developer" href="#" >Dot Net Developers</a></td>
-              <td><a className="developer" href="#">AngularJS Developers</a></td>
-              <td><a className="developer" href="#">Application Developers</a></td>
-              <td><a className="developer" href="#">Aurelia Developers</a></td>
-              <td><a className="developer" href="#">C++ Developers</a></td>
-              <td><a className="developer" href="#">Facebook API Developers</a></td>
+              <td><a className="developer" href="https://www.guru99.com/what-is-backend-developer.html" >Backend Developers</a></td>
+              <td><a className="developer" href="https://en.wikipedia.org/wiki/AngularJS">AngularJS Developers</a></td>
+              <td><a className="developer" href="https://www.careerexplorer.com/careers/app-developer/">Application Developers</a></td>
+              <td><a className="developer" href="https://www.tutorialspoint.com/aurelia/aurelia_quick_guide.htm">Aurelia Developers</a></td>
+              <td><a className="developer" href="https://www.toptal.com/c-plus-plus/job-description">C++ Developers</a></td>
+              <td><a className="developer" href="https://developers.facebook.com/docs/graph-api/overview/">Facebook API Developers</a></td>
             </tr>
             <tr>
 
-              <td><a className="developer" href="#">ADK Developers</a></td>
-              <td><a className="developer" href="#">API Developers</a></td>
-              <td><a className="developer" href="#">Application Engineers</a></td>
-              <td><a className="developer" href="#">Azure Developers</a></td>
-              <td><a className="developer" href="#">CSS Developers</a></td>
-              <td><a className="developer" href="#">Flash Developers</a></td>
+              <td><a className="developer" href="https://www.adkgroup.com/services/mobile-applications/">ADK Developers</a></td>
+              <td><a className="developer" href="https://developer.android.com/">API Developers</a></td>
+              <td><a className="developer" href="https://www.jobhero.com/job-description/examples/computer-software/application-engineer">Application Engineers</a></td>
+              <td><a className="developer" href="https://en.wikipedia.org/wiki/Microsoft_Azure">Azure Developers</a></td>
+              <td><a className="developer" href="https://en.wikipedia.org/wiki/CSS">CSS Developers</a></td>
+              <td><a className="developer" href="https://www.zippia.com/flash-developer-jobs/skills/">Flash Developers</a></td>
             </tr>
           </tbody>
 
@@ -31,21 +31,21 @@ const ListComponent = () =>
 
             <tr>
 
-              <td><a className="developer" href="#">iOS Developers</a></td>
-              <td><a className="developer" href="#">JIRA Developers</a></td>
-              <td><a className="developer" href="#">Android App Developers</a></td>
-              <td><a className="developer" href="#">App Developers</a></td>
-              <td><a className="developer" href="#">Application Programmers</a></td>
-              <td><a className="developer" href="#">Drupal Developers</a></td>
+              <td><a className="developer" href="https://en.wikipedia.org/wiki/IOS">iOS Developers</a></td>
+              <td><a className="developer" href="https://stackify.com/jira-software-developers/">JIRA Developers</a></td>
+              <td><a className="developer" href="https://developer.android.com/">Android App Developers</a></td>
+              <td><a className="developer" href="https://en.wikipedia.org/wiki/Mobile_app_development">App Developers</a></td>
+              <td><a className="developer" href="https://apps.illinoisworknet.com/cis/clusters/OccupationDetails/100045?parentId=111100&section=overview&sectionTitle=Overview">Application Programmers</a></td>
+              <td><a className="developer" href="https://en.wikipedia.org/wiki/Drupal">Drupal Developers</a></td>
             </tr>
             <tr>
 
-              <td><a className="developer" href="#">Front End Developers</a></td>
-              <td><a className="developer" href="#">Java Developers</a></td>
-              <td><a className="developer" href="#">Android Developers</a></td>
-              <td><a className="developer" href="#">HTML 5 Developers</a></td>
-              <td><a className="developer" href="#">Java Engineers</a></td>
-              <td><a className="developer" href="#">Bitcoin Developers</a></td>
+              <td><a className="developer" href="https://en.wikipedia.org/wiki/Front-end_web_development">Front End Developers</a></td>
+              <td><a className="developer" href="https://www.upgrad.com/blog/java-developer-salary-india-freshers-experienced/">Java Developers</a></td>
+              <td><a className="developer" href="https://developer.android.com/">Android Developers</a></td>
+              <td><a className="developer" href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">HTML 5 Developers</a></td>
+              <td><a className="developer" href="https://www.ziprecruiter.in/?utm_source=zr-go-redirect">Java Engineers</a></td>
+              <td><a className="developer" href="https://bitcoin.org/en/development">Bitcoin Developers</a></td>
             </tr>
           </tbody>
 

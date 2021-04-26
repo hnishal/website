@@ -5,6 +5,25 @@ import image19 from '../../image/19.jpg';
 import Footer from './Footer';
 import NavComponent from './Nav';
 const DashboardComponent = () => {
+//   function viewProjectsrequest(event) {
+//     event.preventDefault()
+
+    
+
+//     axios.get('/api/view_all_projects')
+//     .then((response) => {
+//         console.log(response);               
+//     }).catch((error) => {                                   
+//         console.log(error)
+//     })
+//     allprojectsurl();
+// } 
+
+
+  function allprojectsurl(event) {
+    event.preventDefault()
+    window.location = 'http://localhost:5000/SearchProjects';
+  }
   return (
       <div >
       <div>
@@ -21,7 +40,7 @@ const DashboardComponent = () => {
                 <p className="mt-5 text-center">Start bidding on projects that meet your skills. </p>
               </Card.Text>
               <div class="text-center">
-                <Button style={{color:"skyblue"}} variant="dark" className="m-auto" >Browse Projects</Button>
+                <Button style={{color:"skyblue"}} variant="dark" className="m-auto" onClick={allprojectsurl}>Browse Projects</Button>
               </div>
             </Card.Body>
           </Card>

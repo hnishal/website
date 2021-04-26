@@ -21,11 +21,6 @@ const CardComponent3 = () =>
                             <ListGroupItem className="text-center">Convenient payment options</ListGroupItem>
                         </ListGroup>
                     </Card.Body>
-                    <div className="text-center">
-                        <Card.Body>
-                            <Button className="m-3 text-center" style={{color:"skyblue"}} variant="dark">Post a Contract Role</Button>
-                        </Card.Body>
-                    </div>
                 </Card>
                 <Card >
                     <Card.Img className="p-5" class="mt-5 img-16" variant="top" src={image17} />
@@ -40,11 +35,6 @@ const CardComponent3 = () =>
                             <ListGroupItem className="text-center">50% less than traditional staffing agency</ListGroupItem>
                         </ListGroup>
                     </Card.Body>
-                    <div className="text-center">
-                        <Card.Body>
-                            <Button className="text-center" className="m-3" style={{color:"skyblue"}} variant="dark">Post a Full-Time Role</Button>
-                        </Card.Body>
-                    </div>
                 </Card>
             </CardGroup>
         </div>

@@ -61,7 +61,10 @@ function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user
                         setuser_id(response.data.user_id)
                         alert("Signed up");
                         settingsurl();
-                    }                
+                    }
+                    else{
+                        alert("Account already exist")
+                    }         
                 }).catch((error) => {
                     console.log(error)
                 })
