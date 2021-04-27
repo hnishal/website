@@ -6,7 +6,6 @@ import NavComponent from './Nav';
 import axios from 'axios';
 const ProfileformComponent = ({user_id}) => {
     console.log(user_id)
-  // const [userid,setuserid]=useState("")
   const [firstname, setfirstname] = useState("")
   const [lastname, setlastname] = useState("")
   const [firstline, setfirstline] = useState("")
@@ -143,13 +142,15 @@ const ProfileformComponent = ({user_id}) => {
 
         <Form.Group as={Col} controlId="country">
             <Form.Label className="font-weight-bold" >Country</Form.Label>
-            <Form.Control type="country" placeholder="Enter Country's Name" 
+            <Form.Control type="country" placeholder="Enter Country's Name" style={{width: "104%",
+            marginLeft: "-2%"}}
             value={edu_country} onChange={(event) => setedu_country(event.target.value)}
              />
             </Form.Group>
             <Form.Group as={Col} controlId="university">
             <Form.Label className="font-weight-bold">University/College</Form.Label>
-            <Form.Control type="college" placeholder="Enter university/college" 
+            <Form.Control type="college" placeholder="Enter university/college"  style={{width: "104%",
+            marginLeft: "-2%"}}
             value={university} onChange={(event) => setuniversity(event.target.value)} 
             />
             </Form.Group>

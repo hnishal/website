@@ -30,11 +30,11 @@ def create_bid(bid):
     db.bids.insert_one(new_bid.__dict__)
     return "bid-created"
 
-def drop_bid(data):
+def drop_bid(id):
     try:
-        if(db.bids.find_one({"bid_id":data['bid_id']}) != None):
-            db.bids.remove({"bid_id":data['bid_id']})
-            return "bid removed"
+        if(db.bids.find_one({"bid_id":id}) != None):
+            db.bids.remove({"bid_id":id})
+            return True
         else:
             return "bid dosent exist"
     except:
@@ -48,19 +48,27 @@ def show_user_bids(id):
     mycursor= db.bids.find(myquery)
     list1=[]
     for item in mycursor:
+        del item['_id']
+        myquery = {"project_id": item['project_id']}
+        project = db.projects.find_one(myquery)
+        item["project"] = project["project_name"]
         list1.append(item)
     if not list1:
-                return "no data found"
+        return False
     else:
-        return json_util.dumps(list1)
+        return list1
 
 def show_project_bids(id):
     myquery= {"project_id":id}
     mycursor= db.bids.find(myquery)
     list1=[]
     for item in mycursor:
+        del item['_id']
+        myquery = {"user_id": item['user_id']}
+        user = db.profiles.find_one(myquery)
+        item["user"] = user["username"]
         list1.append(item)
     if not list1:
-                return "no data found"
+        return "no data found"
     else:
-        return json_util.dumps(list1)
+        return list1

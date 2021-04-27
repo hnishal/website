@@ -27,7 +27,10 @@ const LoginComponent = () => {
         axios.post('/api/login', login_info)
         .then((response) => {
             console.log(response);   
-            if(response.data == true){
+            if(response.data != true){
+                localStorage.setItem('user_id', response.data.user_id)
+                localStorage.setItem('email', response.data.email)
+                localStorage.setItem('type', response.data.type)
                 dashboardurl()
             }  
             else{

@@ -62,18 +62,18 @@ def run_routes(app):
 
     @ app.route('/api/get_my_bids/<int:id>',methods=['PUT'])
     def get_my_bids(id):
-        response = show_user_bids(id)
-        return response,201
+        response = show_user_bids(int(id))
+        return jsonify(response),201
 
     #to be implemented
     @ app.route('/api/get_bids/<int:id>',methods=['PUT'])
     def show_bids(id):
-        response = show_project_bids(id)
-        return response,201
+        response = show_project_bids(int(id))
+        return jsonify(response),201
 
     @ app.route('/api/close_project/<int:id>',methods=['PUT'])
     def close_Project(id):
-        response = close_project(id)
+        response = close_project(int(id))
         return jsonify(response),201
 
     # @ app.route('/api/skillwise_search',methods=['POST'])
@@ -105,10 +105,9 @@ def run_routes(app):
         # print(json_request["info"])
         return jsonify(response),201
     
-    @ app.route('/api/delete_bid',methods=['DELETE'])
-    def delete_bid():
-        json_request = request.get_json()
-        response = drop_bid(json_request["data"])
+    @ app.route('/api/delete_bid/<int:id>',methods=['PUT'])
+    def delete_bid(id):
+        response = drop_bid(int(id))
         return jsonify(response),201
 
     @ app.route('/api/disable_user/<int:id>', methods=['PUT'])

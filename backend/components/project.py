@@ -35,7 +35,7 @@ def close_project(id):
     myquery= {"project_id": id}
     newvalues={"$set":{"status":"closed"}}
     db.projects.update_one(myquery, newvalues)
-    return "success"
+    return True
 
 def get_status(id):
     myquery= {"project_id": id}

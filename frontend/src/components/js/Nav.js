@@ -23,11 +23,9 @@ return(
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
     <Form inline>
-    {/* <FormControl type="text" placeholder="Search" className="mr-2" />
-      <Button variant="outline-success" >Search</Button> */}
       <button class="btn btn-primary mr-5" onClick={SearchProjectsurl}>Browse</button>
     </Form>
-    <div className="pl-5 pt-2 d-flex">
+    <div className=" pt-2 d-flex">
     <i style={{color:"white"}} className="mt-1 fa fa-fw fa-file"></i>
     <a href="./myProjects" className=" project ml-1" style={{color:"white"}}>Projects</a>
     </div>
@@ -35,16 +33,18 @@ return(
     <i style={{color:"white"}} className="mt-1 fa fa-fw fa-gear"></i>
     <a href="./settings" className=" project ml-1" style={{color:"white"}}>Settings</a>
     </div>
-    {/* <div className="pl-5 pt-2 d-flex">
-    <i style={{color:"white"}} className="mt-1 fa fa-id-card"></i>
-    <a href="./dashboard" className=" project ml-1" style={{color:"white"}}>Dashboard</a>
-    </div> */}
+    <div className="pl-5 pt-2 d-flex">
+    <i style={{color:"white"}} className="mt-1 fa fa-user"></i>
+    <a href="./profile" className=" project ml-1" style={{color:"white"}}>Profile</a>
+    </div>
+    <div className="pl-5 pt-2 d-flex">
+    <i style={{color:"white"}} className="mt-1 fa fa-asterisk"></i>
+    <a href="./bids" className=" project ml-1" style={{color:"white"}}>Bids</a>
+    </div>
     </Nav>
     <Nav>
-    <a href="#"><i class="fa fa-fw fa-bell mr-4 fa-lg mt-2" ></i></a>
-  <a href="#"><i class="fa fa-fw fa-commenting mr-4 fa-lg mt-2 "></i></a>   
-  <button class="btn btn-primary mr-5" onClick={(event) => { postProjecturl(event) }}>Post a Project</button>
-  <a className="mr-5 pr-5 fa-lg mt-2 " onClick={logoutrequest} >LogOut</a>  
+  <button class="btn btn-primary mr-3" onClick={(event) => { postProjecturl(event) }}>Post a Project</button>
+  <a className="mr-1 pr-5 fa-lg mt-2 " onClick={logoutrequest} style={{cursor:"pointer"}}>LogOut</a>  
     </Nav>
   </Navbar.Collapse>
 </Navbar>

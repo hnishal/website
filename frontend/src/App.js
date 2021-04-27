@@ -12,8 +12,9 @@ import MyProjects from './components/js/MyProjects';
 import PostProjectComponent from './components/js/PostProject';
 import ProjectComponent from './components/js/project';
 import WorkingComponent from './components/js/HowWorks';
-import ProposalComponent from './components/js/proposal';
 import SearchprojectComponent from './components/js/SearchProjects';
+import BidsComponent from './components/js/Bids';
+import ProjectBidsComponent from './components/js/ProjectsBid';
 
 const App = () => {
 
@@ -38,6 +39,12 @@ const App = () => {
   const profile = () => {
     return(
       <ProfileComponent  user_id={user_id}/>
+    )
+  }
+  const projectbids = () => {
+    // console.log(project_id)
+    return(
+       <ProjectBidsComponent project_id={project_id}/>
     )
   }
   const dashboard = () => {
@@ -75,6 +82,11 @@ const App = () => {
       <AccountComponent user_id={user_id} />
     )
   }
+  const bids = () => {
+    return(
+      <BidsComponent user_id={user_id}/>
+    )
+  }
   const howWorks = () => {
     return(
       <WorkingComponent />
@@ -82,12 +94,7 @@ const App = () => {
   }
   const myprojects = () => {
     return(
-      <MyProjects user_id={user_id}/>
-    )
-  }
-  const proposal = () => {
-    return(
-      <ProposalComponent/>
+      <MyProjects user_id={user_id} setproject_id={setproject_id}/>
     )
   }
   const postproject = () => {
@@ -113,8 +120,9 @@ const App = () => {
     <Route path="/myProjects" component={myprojects}/>
     <Route path="/project" component={project}/>
     <Route path="/howWorks" component={howWorks}/>
-    <Route path="/proposal" component={proposal}/>
+    <Route path="/bids" component={bids}/>
     <Route path="/SearchProjects"  component={SearchProjects}/>
+    <Route path="/projectbids" component={projectbids}/>
     <Redirect to = "/" />
     </Switch>
     </BrowserRouter>

@@ -4,7 +4,6 @@ import axios from 'axios';
 
 
 
-
 function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user_id}){
 
     function settingsurl() {
@@ -32,20 +31,23 @@ function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user
 
     function handleClick(event){
         event.preventDefault()
-        
-        const hire = document.getElementById('hire')
-        const work = document.getElementById('work')
-        if(hire.checked==true){
-            localStorage.setItem('type', "employer")
-            settype("employer")
-        }
-        else{
-            localStorage.setItem('type', "freelancer")
-
-            settype("freelancer")
-        }
-        console.log(user_info)
-        if(checkpwd()){
+        var emailpatt = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+        var passpatt = new RegExp("^(.*).{8,}$"
+)
+        if(emailpatt.test(myemail) && passpatt.test(mypwd))
+        {
+            const hire = document.getElementById('hire')
+            const work = document.getElementById('work')
+            if(hire.checked==true){
+                localStorage.setItem('type', "employer")
+                settype("employer")
+            }
+            else{
+                localStorage.setItem('type', "freelancer")
+                settype("freelancer")
+            }
+            console.log(user_info)
+            if(checkpwd()){
             axios.post('/api/signup', user_info)
                 .then((response) => {
                     console.log(response.data);
@@ -68,13 +70,18 @@ function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user
                 }).catch((error) => {
                     console.log(error)
                 })
-        } else {
+                } else {
             
-            alert("Confirm password should be equal to password");
-        }
-        console.log(user_id)
+                 alert("Confirm password should be equal to password");
+                }
+                
+            }
+    else{
+        alert("Pattern is not correct")
     }
-    
+}
+
+
     return<div class="mt-5">
 
 <section class="register-photo">
@@ -83,8 +90,8 @@ function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user
             <form method="post">
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group"><input class="form-control" type="name" name="username" placeholder="username" required value={myusername} onChange={(event) => setmyusername(event.target.value)}/></div>
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" required value={myemail} onChange={(event) => setmyemail(event.target.value)}/></div>
-                <div class="form-group"><input class="form-control" type="password" name="password" value={mypwd} onChange={(event) => setmypwd(event.target.value)} placeholder="Password" required/></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" pattern="[a-zA-Z]+@[a-z]+.[a-z]+" required value={myemail} onChange={(event) => setmyemail(event.target.value)}/></div>
+                <div class="form-group"><input class="form-control" type="password" name="password" value={mypwd} pattern='[a-zA-Z]{8}' onChange={(event) => setmypwd(event.target.value)} placeholder="Password" required/></div>
                 <div class="form-group"><input class="form-control" type="password" name="password-repeat"
                         placeholder="Confirm Password " value={confirmpwd} onChange={(event) => setconfirmpwd(event.target.value)}/></div>
 

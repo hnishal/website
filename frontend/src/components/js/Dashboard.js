@@ -49,8 +49,6 @@ const DashboardComponent = () => {
           <Card style={{ width: '14rem' }}>
             <Card.Body>
               <h6>Welcome back,</h6>
-              <Card.Title>Name</Card.Title>
-              <p>@username</p>
               <Card.Text>
                 Set up your account
               </Card.Text>

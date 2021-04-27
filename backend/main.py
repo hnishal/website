@@ -23,7 +23,8 @@ run_routes(app)
 @ app.route('/project')
 @ app.route('/howWorks')
 @ app.route('/SearchProjects')
-@ app.route('/proposal')
+@ app.route('/bids')
+@ app.route('/projectbids')
 
 def hello_world():
     return render_template('index.html')

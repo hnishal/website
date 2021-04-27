@@ -46,10 +46,11 @@ useEffect(() => {
    console.log("Mapping projects")
  return <Card className="ml-3 mr-3 mt-3" key = {index} onClick={(event) => {
    setproject_id(search_project[index].project_id)
+   localStorage.setItem("project_id", search_project[index].project_id)
    displayproject(event) }}>
         
   <Card.Body >
-    <Card.Title style={{ fontSize: "20px" }}>{pro_search.project_name}</Card.Title>
+    <Card.Title style={{ fontSize: "20px" ,cursor:"pointer"}}>{pro_search.project_name}</Card.Title>
     <Card.Text style={{ fontSize: "20px" }}>
         {pro_search.description}
     </Card.Text>
@@ -67,7 +68,7 @@ const all_projects = allprojects.map((pro_search, index) => {
    }}>
         
   <Card.Body >
-    <Card.Title style={{ fontSize: "20px" }}>{pro_search.project_name}</Card.Title>
+    <Card.Title style={{ fontSize: "20px", cursor:"pointer" }}>{pro_search.project_name}</Card.Title>
     <Card.Text style={{ fontSize: "20px" }}>
         {pro_search.description}
     </Card.Text>
@@ -78,9 +79,9 @@ const all_projects = allprojects.map((pro_search, index) => {
 
 
     return(
-        <div>
+        <div className="overflow-hidden">
         <NavComponent/>
-        <div class="row mt-5">
+        <div class="row mt-5 pt-5 overflow-hidden">
         <div class="col-md-8 offset-md-2">
           <div class="d-flex">
             <FormControl type="text" placeholder="Search" className="mr-2" value={text} onChange={(event) => settext(event.target.value)} />
@@ -88,12 +89,12 @@ const all_projects = allprojects.map((pro_search, index) => {
             </div>
             <div>
              {search_projects.length ? <div>{search_projects}</div> : 
-             all_projects.length ? <div>{all_projects}</div> : <h1>No projects found</h1>}
+             all_projects.length ? <div>{all_projects}</div> : <h1 style={{marginTop:"50px", textAlign:"center"}}>No projects found</h1>}
             </div>
        
 </div>
 </div>
-<div class="mt-5">
+<div class="" style={{marginTop:"15%"}}>
     <Footer/>
 </div>
 </div>

@@ -44,11 +44,11 @@ def check_login(profile):
     try:
         profile_data = db.profiles.find_one({"username": profile["username"]})
         boolean = check_password_hash(profile_data["password"], profile["password"])
-        return boolean
         if boolean == True :
-            return "login successful"
+            del profile_data["_id"]
+            return profile_data
         else:
-            return "wrong password"
+            return False
     except:
         return "user dosent exist"
 
