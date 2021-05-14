@@ -14,6 +14,7 @@ function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user
     const [myusername, setmyusername] = useState("")
     const [myemail, setmyemail] = useState("")
     const [mypwd, setmypwd] = useState("")
+    const [mytype, setmytype] = useState("employer")
     
    
     function checkpwd() {
@@ -25,27 +26,30 @@ function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user
             username: myusername,
             email: myemail,
             password: mypwd,
-            type:type
+            type:mytype
         }
     }
 
     function handleClick(event){
         event.preventDefault()
         var emailpatt = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
-        var passpatt = new RegExp("^(.*).{8,}$"
-)
+        var passpatt = new RegExp("^(.*).{8,}$")
         if(emailpatt.test(myemail) && passpatt.test(mypwd))
         {
-            const hire = document.getElementById('hire')
-            const work = document.getElementById('work')
-            if(hire.checked==true){
-                localStorage.setItem('type', "employer")
-                settype("employer")
-            }
-            else{
-                localStorage.setItem('type', "freelancer")
-                settype("freelancer")
-            }
+            // const hire = document.getElementById('hire')
+            // const work = document.getElementById('work')
+            // console.log(hire.checked)
+            // console.log(work.checked)
+            // if(hire.checked===true){
+            //     localStorage.setItem('type', "employer")
+            //     settype("employer")
+            // }
+            // else{
+            //     localStorage.setItem('type', "freelancer")
+            //     settype("freelancer")
+            // }
+            localStorage.setItem('type', mytype)
+            settype(mytype)
             console.log(user_info)
             if(checkpwd()){
             axios.post('/api/signup', user_info)
@@ -97,13 +101,13 @@ function SignupComponent({ setusername, setemail, setuser_id ,type, settype,user
 
                     <div className="d-flex p-3 ">
                     <div class="form-check ml-auto font-weight-bold">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="hire" value="option1" checked/>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="hire" value="option1" onChange={(event) => setmytype("employer")}/>
                         <label class="form-check-label" for="exampleRadios1">
                             Hire
                         </label>
                         </div>
                         <div class="form-check mr-auto ml-2 font-weight-bold">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="work" value="option2"/>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="work" value="option2" onChange={(event) => setmytype("freelancer")}/>
                         <label class="form-check-label" for="exampleRadios2">
                             Work
                         </label>

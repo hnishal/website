@@ -50,7 +50,7 @@ def run_routes(app):
     def view_profile(id):
         print("On server:" + str(id))
         response = show_profile(int(id))
-        print(type(response))
+        print(response)
         return jsonify(response),201
 
 

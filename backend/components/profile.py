@@ -22,10 +22,12 @@ class Profile:
 
 def create_profile(profile):
     global count
-    new_profile=Profile(profile)
-    count=count+1
-    new_profile.user_id = count
+    
     try:
+        new_profile=Profile(profile)
+        count=count+1
+        new_profile.user_id = count
+        print(profile)
         db.profiles.insert_one(new_profile.__dict__)
         return {
             "message":"Profile Created",
@@ -46,6 +48,7 @@ def check_login(profile):
         boolean = check_password_hash(profile_data["password"], profile["password"])
         if boolean == True :
             del profile_data["_id"]
+            print(profile_data)
             return profile_data
         else:
             return False
