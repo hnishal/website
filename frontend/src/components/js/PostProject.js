@@ -22,11 +22,12 @@ const PostProjectComponent = ({user_id})=>{
       }
       axios.post('/api/post_project', postproject_info)
       .then((response) => {
-          console.log(response);               
+          console.log(response.data);  
+          myProjecturl();             
       }).catch((error) => {                                   
           console.log(error)
       })
-      myProjecturl();
+      
   }  
   function myProjecturl() {
    window.location = 'http://localhost:5000/myProjects';

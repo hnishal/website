@@ -33,6 +33,7 @@ def run_routes(app):
         print("adding project")
         json_request = request.get_json()
         response = add_project(json_request['project'])
+        print(response)
         return jsonify(response), 201
 
     @ app.route('/api/place_bid', methods=['POST'])

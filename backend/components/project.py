@@ -45,16 +45,16 @@ def get_status(id):
 def add_project(project):
     global count
     print("in add project")
-    count += 1
+    
     try:
-        if(db.profiles.find_one({"user_id" : project['user_id']}) != None ):
-            print("after if")
-            new_project = Project(project)
-            new_project.project_id = count
-            db.projects.insert_one(new_project.__dict__)
-            return "project created"
-        else:
-            return "no such profile exists"
+        print(count)
+        count += 1
+        print("after if")
+        new_project = Project(project)
+        new_project.project_id = count
+        db.projects.insert_one(new_project.__dict__)
+        return "project created"
+
     except:
         return logging.exception("Error!")
 
